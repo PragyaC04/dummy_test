@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/t', function () {
+    return view('auth/templogin');
+});
 
 Auth::routes();
 
