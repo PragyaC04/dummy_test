@@ -1,9 +1,5 @@
-<html> 
-  
-<head> 
-    <script> 
-        //set minutes 
-        var mins = 2; 
+ 
+        var mins = 1; 
   
         //calculate the seconds 
         var secs = mins * 60; 
@@ -35,14 +31,17 @@
                 //when less than a minute remaining 
                 //colour of the minutes and seconds 
                 //changes to red 
-                if (mins < 1) { 
+                if (mins < 5) { 
                     minutes.style.color = "red"; 
                     seconds.style.color = "red"; 
                 } 
                 //if seconds becomes zero, 
                 //then page alert time up 
                 if (mins < 0) { 
-                    alert('time up'); 
+                    /////////////////////////////
+                    window.alert('time up'); 
+                    window.location.href='http://GOOGLE.com';
+                    ////////////////////////////
                     minutes.value = 0; 
                     seconds.value = 0; 
                 } 
@@ -65,22 +64,3 @@
             //from total seconds remaining 
             return secs - Math.round(mins * 60); 
         } 
-    </script> 
-</head> 
-<!-- onload function is evoke when page is load --> 
-<!--countdown function is called when page is loaded --> 
-  
-<body onload="countdown();"> 
-    <div> 
-        Time Left :: 
-        <input id="minutes" type="text" style="width: 10px; 
-             border: none; font-size: 16px;  
-            font-weight: bold; color: black;"><font size="5"> : 
-                        </font> 
-        <input id="seconds" type="text" style="width: 20px; 
-                        border: none; font-size: 16px; 
-                        font-weight: bold; color: black;"> 
-    </div> 
-</body> 
-  
-</html> 
