@@ -32,7 +32,7 @@ top: 50%;
 left: 50%;
 transform: translate(-50%,-50%);
 width: 400px;
-height: 600px;
+height: 910px;
 padding: 80px 40px;
 box-sizing: border-box;
 background: rgba(0,0,0,.7);
@@ -114,7 +114,7 @@ width: 20%;
          cursor: pointer;
 		 border-radius: 7px;
 		 position : absolute;
-		 top: calc(+1050px/2);
+		 top: calc(+1650px/2);
 		 left: calc(50% - 170px);
 		 font-family:"Times New Roman";
 		 
@@ -167,11 +167,15 @@ width: 20%;
      <input type="number" name="pincode" max="999999" style = "color:white" required> 
 	 <br>
 
+         INPUT PASSWORD:<input type="password" name="input_password" style = "color:white" required ><br>
+	CONFIRM PASSWORD:<input type="password" name="confirm_password" style = "color:white" required><br>
+	DTE APPLICATION ID:<input type="text" name="dte_id" style = "color:white" required><br>
+	PERCENTAGE:<input type="number" name="marks" min="1" max="100" style = "color:white" required><br>
+	APPLICATION NUMBER:<input type="text" name="Application_no." style = "color:white" required>
+	<br><br>
 
 <br>
- PROGRESS:
-<progress value="50" max="100" style="color:red" >
-</progress>
+
 <button formaction ="registration2.html"  id="btn"><b>Next</b></button>
 </a>
 </p>
