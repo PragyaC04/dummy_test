@@ -14,7 +14,7 @@ content: '';
 position: fixed;
 width: 100vw;
 height: 100vh;
-background-image: url("build.png");
+background-image: url("images/build.png");
 background-position: center center;
 background-repeat: no-repeat;
 background-attachment: fixed;
@@ -36,16 +36,25 @@ height: 910px;
 padding: 80px 40px;
 box-sizing: border-box;
 background: rgba(0,0,0,.7);
-border-radius:7%;
+border-radius:5%;
+top: 500px;
 }
 .avatar {
-position: absolute;
+/*position: absolute;
 width: 80px;
 height: 80px;
 border-radius: 10%;
 overflow: hidden;
 top: calc(-60px/2);
-left: calc(50% - 40px);
+left: calc(50% - 40px);*/
+position: absolute;
+width: 120px;
+height: 100px;
+border-radius: 10%;
+overflow: hidden;
+
+top: calc(-100px/2);
+left: calc(50% - 60px);
 }
 .Registration-form h2 {
 margin: 0;
@@ -130,13 +139,13 @@ width: 20%;
 </head>
 <body>
 <div class="Registration-form">
-<img src="vesitlogo.png" class="avatar">
+<img src="images/veslogo.png" class="avatar">
 <h2>Registration Form</h2>
 <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 <p style="color:white">
 
-<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}" style="color:white">
 	NAME:<input type="text" name="Name" style = "color:white" class="required" required >
 	@if ($errors->has('name'))
                                     <span class="help-block">
@@ -145,7 +154,7 @@ width: 20%;
                                 @endif</div><br>
 
 
-<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}" style="color:white">
         EMAIL-ID:
      <input type="text" name="email_id" style = "color:white" required> 
      <br>
@@ -156,7 +165,7 @@ width: 20%;
                                 @endif
      </div>
 
-     <div class="form-group{{ $errors->has('phoneno') ? ' has-error' : '' }}">
+     <div class="form-group{{ $errors->has('phoneno') ? ' has-error' : '' }}" style="color:white">
 	PHONE NUMBER:<input type="tel" maxlength="10" name="Phone number" style = "color:white" required>
 	<br>
 	  

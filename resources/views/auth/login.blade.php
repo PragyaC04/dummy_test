@@ -171,7 +171,7 @@ a:hover, a:active {
 </div>
 <button formaction ="" id="btn" id="btn"><b>Login</b></button>
   <br><br>
- <a href="registration1.html">Not registered? Click here!</a>
+ <a href="/register">Not registered? Click here!</a>
 </a>
 </p>
 
