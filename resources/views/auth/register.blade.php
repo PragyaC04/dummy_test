@@ -23,11 +23,14 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10'">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
+                            @if ($errors->has('phone_number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone_no') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
