@@ -12,12 +12,25 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body style='background-image: url("images/build.png");background-position: center center;
+    <style>
+    body:before{
+content: '';
+position: fixed;
+width: 100vw;
+height: 100vh;
+background-image: url("images/build.png");
+background-position: center center;
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-size: cover;
-filter:blur(5px)'>
+-webkit-filter: blur(5px);
+-moz-filter: blur(5px);
+-o-filter: blur(5px);
+-ms-filter: blur(5px);
+filter: blur(5px);
+}</style>
+</head>
+<body >
     <div id="app">
         <nav class="navbar navbar-default navbar-expand-md bg-primary shadow-sm">
             <div class="container">
