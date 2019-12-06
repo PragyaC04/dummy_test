@@ -12,11 +12,30 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body style='background-image: url("images/build.png");background-position: center center;
+    <style>
+    body:before{
+content: '';
+position: fixed;
+width: 100vw;
+height: 100vh;
+background-image: url("images/build.png");
+background-position: center center;
 background-repeat: no-repeat;
 background-attachment: fixed;
-background-size: cover;'>
+background-size: cover;
+-webkit-filter: blur(5px);
+-moz-filter: blur(5px);
+-o-filter: blur(5px);
+-ms-filter: blur(5px);
+filter: blur(5px);
+}
+/* #form{
+background: rgba(0,0,0,.4);
+color: white;
+} */
+    </style>
+</head>
+<body>
     <div id="app">
         <!-- <nav class="navbar navbar-default navbar-static-top"> -->
             <div class="container">

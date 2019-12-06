@@ -16,7 +16,8 @@
 <body style='background-image: url("images/build.png");background-position: center center;
 background-repeat: no-repeat;
 background-attachment: fixed;
-background-size: cover;'>
+background-size: cover;
+filter:blur(5px)'>
     <div id="app">
         <nav class="navbar navbar-default navbar-expand-md bg-primary shadow-sm">
             <div class="container">
