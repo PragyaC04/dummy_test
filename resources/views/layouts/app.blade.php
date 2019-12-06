@@ -13,7 +13,10 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style='background-image: url("images/build.png");background-position: center center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;'>
     <div id="app">
         <nav class="navbar navbar-default navbar-expand-md bg-primary shadow-sm">
             <div class="container">
