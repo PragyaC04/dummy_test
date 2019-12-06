@@ -8,18 +8,22 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'FE Test Module') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-expand-md bg-primary shadow-sm">
             <div class="container">
     
                 <div class="navbar-header">
-                   
+                   <!-- Branding Image -->
+                   <a class="navbar-brand" href="{{ url('/') }}"><h1>
+                   <img src='https://www.latestlaws.com/media/2019/02/c01d458630da7d287abbc4470b488c19.png' width="50">
+                    {{ config('app.name', 'FE Test Module') }}</h1>
+                    </a>
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
                         <span class="sr-only">Toggle Navigation</span>
@@ -27,12 +31,6 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
-                    <!-- Branding Image -->
-                   <a class="navbar-brand" href="{{ url('/') }}">
-                   <img src='https://www.latestlaws.com/media/2019/02/c01d458630da7d287abbc4470b488c19.png' width="50">
-                    {{ config('app.name', 'Laravel') }}
-                    </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
