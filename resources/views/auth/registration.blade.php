@@ -181,12 +181,7 @@ width: 20%;
 	DTE APPLICATION ID:<input type="text" name="dte_id" style = "color:white" required><br>
 	PERCENTAGE:<input type="number" name="marks" min="1" max="100" style = "color:white" required><br>
 	APPLICATION NUMBER:<input type="text" name="Application_no." style = "color:white" required>
-	<br><br>
-
-<br>
-
 <button formaction ="registration2.html"  id="btn"><b>Next</b></button>
-</a>
 </p>
 
 
