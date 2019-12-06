@@ -195,7 +195,7 @@ a:hover, a:active {
 	PERCENTAGE:<input type="number" name="marks" min="1" max="100" style = "color:white" required><br>
 	APPLICATION NUMBER:<input type="text" name="Application_no." style = "color:white" required>
     <div>
-<button formaction ="registration2.html"  id="btn"><b>Next</b></button><br><br><br></div>
+<button type='submit'  id="btn"><b>Next</b></button><br><br><br></div>
 <a href="/login">Already Registered? Click here!</a>
 
 </p>
