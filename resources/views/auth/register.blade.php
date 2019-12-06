@@ -152,6 +152,9 @@
                             </div>
                         </div>
                         <!-- Register Button ends -->
+                        <!-- Login route -->
+                        <div class='form-group'><div class="col-md-6 col-md-offset-4">
+                        Already Registered? <a href="/login">Click here!</a></div><div>
                     </form>
                 </div>
             </div>

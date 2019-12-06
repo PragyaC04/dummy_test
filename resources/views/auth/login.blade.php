@@ -56,10 +56,11 @@
                                 <button type="submit" class="btn btn-primary " >
                                     Login
                                 </button>
+                        </div></div>
 
-                                
-                            </div>
-                        </div>
+                        <!-- Register route -->
+                        <div class='form-group'><div class="col-md-6 col-md-offset-4">
+                        Not Registered? <a href="/register">Click here!</a></div><div>
                     </form>
                 </div>
             </div>
