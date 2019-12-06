@@ -23,7 +23,7 @@
             }
 
             .full-height {
-                height: 100vh;
+                height: 1000vh;
             }
 
             .flex-center {
@@ -36,9 +36,8 @@
                 position: relative;
             }
 
-            .top-right {
+            .top-center {
                 position: absolute;
-                right: 10px;
                 top: 18px;
             }
 
@@ -66,23 +65,12 @@
         </style>
     </head>
     <body onload="countdown();">
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
             <div class="content">
                 <div class="title m-b-md">
-                    Chunin Exam
+                    Online Fe Test Module
                 </div>
-                <div > 
+            </div><br><br>
+        <!-- <div> 
         Time Left :: 
         <input id="minutes" type="text" style="width: 20px; 
              border: none; font-size: 16px;  
@@ -91,8 +79,19 @@
         <input id="seconds" type="text" style="width: 20px; 
                         border: none; font-size: 16px; 
                         font-weight: bold; color: black;"> 
-    </div>                 
-            </div>
+            </div>                  -->
+            <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-center links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('register') }}">Register</a>
+                    @endauth
+                </div>
+            @endif
         </div>
     </body>
 </html>
+

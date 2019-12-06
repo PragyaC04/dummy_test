@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'FE Test Module') }}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -28,26 +28,33 @@ background-size: cover;
 -o-filter: blur(5px);
 -ms-filter: blur(5px);
 filter: blur(5px);
-}</style>
+}
+/* #form{
+background: rgba(0,0,0,.4);
+color: white;
+} */
+    </style>
 </head>
-<body >
+<body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-expand-md bg-primary shadow-sm">
+        <!-- <nav class="navbar navbar-default navbar-static-top"> -->
             <div class="container">
     
                 <div class="navbar-header">
-                   <!-- Branding Image -->
-                   <a class="navbar-brand" href="{{ url('/') }}"><h1>
-                   <img src='https://www.latestlaws.com/media/2019/02/c01d458630da7d287abbc4470b488c19.png' width="50">
-                    {{ config('app.name', 'FE Test Module') }}</h1>
-                    </a>
+                   
                     <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
+                    <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
                         <span class="sr-only">Toggle Navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </button>
+                    </button> -->
+
+                    <!-- Branding Image -->
+                   <!-- <a class="navbar-brand" href="{{ url('/') }}">
+                   <img src='https://www.latestlaws.com/media/2019/02/c01d458630da7d287abbc4470b488c19.png' width="50">
+                    {{ config('app.name', 'Laravel') }}
+                    </a> -->
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -57,8 +64,8 @@ filter: blur(5px);
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
+                    <!-- <ul class="nav navbar-nav navbar-right">
+                      
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
@@ -83,7 +90,7 @@ filter: blur(5px);
                                 </ul>
                             </li>
                         @endguest
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </nav>
