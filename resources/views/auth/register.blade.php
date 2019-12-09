@@ -94,7 +94,7 @@
                             <label for="marks" class="col-md-4 control-label">Percentage</label>
 
                             <div class="col-md-6">
-                                <input id="marks" type="number" class="form-control" name="marks" required>
+                                <input id="marks" type="number" class="form-control" name="marks" min='0' max='100' step='0.01' required>
 
                                 @if ($errors->has('marks'))
                                     <span class="help-block">
@@ -104,7 +104,7 @@
                             </div>
                         </div>
                         <!-- percent ends -->
-                        <!-- percent start -->
+                        <!-- dte start -->
                         <div class="form-group{{ $errors->has('dte') ? ' has-error' : '' }}">
                             <label for="dte" class="col-md-4 control-label">DTE Application No.</label>
 
@@ -118,7 +118,7 @@
                                 @endif
                             </div>
                         </div>
-                        <!-- percent ends -->
+                        <!-- dte ends -->
                         <!-- Password start -->
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
