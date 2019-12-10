@@ -88,15 +88,15 @@
                         </div>
                         <!-- pincode ends -->
                         <!-- percent start -->
-                        <div class="form-group{{ $errors->has('marks') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('percent') ? ' has-error' : '' }}">
                             <label for="marks" class="col-md-4 control-label">Percentage</label>
 
                             <div class="col-md-6">
                                 <input id="marks" type="number" class="form-control" name="percent" min='0' max='100' step='0.01' required>
 
-                                @if ($errors->has('marks'))
+                                @if ($errors->has('percent'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('marks') }}</strong>
+                                        <strong>{{ $errors->first('percent') }}</strong>
                                     </span>
                                 @endif
                             </div>
