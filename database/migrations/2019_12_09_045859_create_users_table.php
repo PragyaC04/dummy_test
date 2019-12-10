@@ -19,10 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('address');
-            $table->smallInteger('pin');
+            $table->string('pin');
             $table->float('percent');
             $table->string('dte');
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

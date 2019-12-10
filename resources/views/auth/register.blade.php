@@ -9,12 +9,12 @@
                 Fe Test Module
                 </div>
                 <div class="panel-heading" id='form' style='text-align:center;'>Register</div>
-                <!-- start of the form -->
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
+                    <!-- start of the form -->
+                    <div class="panel-body">
+                        <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                            {{ csrf_field() }}
 
-                    <!-- name start -->
+                        <!-- name start -->
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
@@ -28,9 +28,9 @@
                                 @endif
                             </div>
                         </div>
-                    <!-- name Ends -->
-                    <!-- email start -->
-                       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <!-- name Ends -->
+                        <!-- email start -->
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
                             <div class="col-md-6">
                             
@@ -59,13 +59,11 @@
                             </div>
                         </div>
                         <!-- Phone No.end -->
-                         <!-- Address start -->
-                       <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                        <!-- Address start -->
+                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                             <label for="address" class="col-md-4 control-label">Address</label>
-                            <div class="col-md-6">
-                            
+                            <div class="col-md-6">                            
                                 <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required>
-
                                 @if ($errors->has('address'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('address') }}</strong>
@@ -94,7 +92,7 @@
                             <label for="marks" class="col-md-4 control-label">Percentage</label>
 
                             <div class="col-md-6">
-                                <input id="marks" type="number" class="form-control" name="marks" min='0' max='100' step='0.01' required>
+                                <input id="marks" type="number" class="form-control" name="percent" min='0' max='100' step='0.01' required>
 
                                 @if ($errors->has('marks'))
                                     <span class="help-block">
@@ -154,7 +152,7 @@
                         <!-- Register Button ends -->
                         <!-- Login route -->
                         <div class='form-group'><div class="col-md-6 col-md-offset-4">
-                        Already Registered? <a href="/login">Click here!</a></div><div>
+                        Already Registered? <a href="/login">Click here!</a></div></div>
                     </form>
                 </div>
             </div>

@@ -29,10 +29,6 @@ background-size: cover;
 -ms-filter: blur(5px);
 filter: blur(5px);
 }
-/* #form{
-background: rgba(0,0,0,.4);
-color: white;
-} */
     </style>
 </head>
 <body>
@@ -64,7 +60,7 @@ color: white;
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <!-- <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right">
                       
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
@@ -90,7 +86,7 @@ color: white;
                                 </ul>
                             </li>
                         @endguest
-                    </ul> -->
+                    </ul>
                 </div>
             </div>
         </nav>
