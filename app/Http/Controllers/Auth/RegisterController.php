@@ -1,12 +1,10 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
-
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
 class RegisterController extends Controller
 {
     /*
@@ -19,16 +17,13 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
-
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
     protected $redirectTo = '/home';
-
     /**
      * Create a new controller instance.
      *
@@ -38,7 +33,6 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -48,18 +42,20 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' =>    'required|string|max:255',
-            'email' =>   'required|string|email|max:255|unique:users',
-            'phone' =>   'required|digits:10|unquie:users',
-            'address' => 'required|string|max:255',
-            'pin' =>     'required|digits:6',
-            'percent' => 'required|numeric|between:0,99.99',
-            'dte'=>      'required|regex:[/(^[a-zA-Z]{2}\d{8}$)/u',
-            'password' =>'required|string|min:6|confirmed',
+            
 
+            'name' =>[ 'required','min:2','max:255'],
+            'email' =>['required','email'],
+            'phone' =>['required','digits:10'],
+            'address' =>['required','string','max:255'],
+            'pin' =>['required','digits:6'],
+            'percent' =>['required','numeric','between:0,99.99'],
+            'dte'=>['required','regex:/(^[a-zA-Z]{2}\d{8}$)/u'],
+            'password' =>['required','min:6','max:20','confirmed'],
+            
         ]);
+        
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -69,14 +65,14 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' =>   $data['name'],
-            'email' =>  $data['email'],
-            'phone' =>  $data['phone'],
+            'name' =>$data['name'],
+            'email' =>$data['email'],
+            'phone' =>$data['phone'],
             'address' =>$data['address'],
-            'pin' =>    $data['pin'],
+            'pin' =>$data['pin'],
             'percent' =>$data['percent'],
-            'dte' =>    $data['dte'],
-            'password' => bcrypt($data['password']),
+            'dte' =>$data['dte'],
+            'password' =>bcrypt($data['password']),
         ]);
     }
 }
