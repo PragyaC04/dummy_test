@@ -37,10 +37,10 @@ filter: blur(5px);
     
                 <div class="navbar-header">
                    <!-- Branding Image -->
-                   <a class="navbar-brand" href="{{ url('/') }}"><h1>
+                   <!-- <a class="navbar-brand" href="{{ url('/') }}"><h1>
                    <img src='https://www.latestlaws.com/media/2019/02/c01d458630da7d287abbc4470b488c19.png' width="50">
                     {{ config('app.name', 'FE Test Module') }}</h1>
-                    </a>
+                    </a> -->
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
                         <span class="sr-only">Toggle Navigation</span>

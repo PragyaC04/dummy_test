@@ -60,7 +60,7 @@ filter: blur(5px);
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <!-- <ul class="nav navbar-nav navbar-right">
                       
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
@@ -86,7 +86,7 @@ filter: blur(5px);
                                 </ul>
                             </li>
                         @endguest
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </nav>
