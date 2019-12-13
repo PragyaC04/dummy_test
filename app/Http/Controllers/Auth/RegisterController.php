@@ -48,7 +48,7 @@ class RegisterController extends Controller
             'phone' =>'required|digits:10',
             'address' =>'required|string|max:255',
             'pin' =>'required|min:6|max:6',
-            'percent' =>'required|digits:2|between:0,99.99',
+            'percent' =>'required|between:0,99.99',
             'dte'=>'required|regex:/(^[a-zA-Z]{2}\d{8}$)/u',
             'password' =>'required|min:6|max:20|confirmed',
             
@@ -62,7 +62,6 @@ class RegisterController extends Controller
             'phone.digits' => 'Phone no should be 10 digits',
 
         ]);
-        dd($data);
         
     }
     /**
@@ -81,6 +80,7 @@ class RegisterController extends Controller
             'pin' =>$data['pin'],
             'percent' =>$data['percent'],
             'dte' =>$data['dte'],
+            'role' => $data['role'],
             'password' =>bcrypt($data['password']),
         ]);
     }

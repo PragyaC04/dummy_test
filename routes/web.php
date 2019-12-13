@@ -11,17 +11,37 @@
 |
 */
 
+// Route::get('/t', function () {
+//     return view('auth/login1');
+// });
+// Route::get('/tt', function () {
+//     return view('auth/register1');
+// });
+
+//New Working Routes (Multi auth)
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/t', function () {
-    return view('auth/login1');
-});
-Route::get('/tt', function () {
-    return view('auth/register1');
-});
+Route::group(['middleware'=>['web','auth']],function(){
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
-
+    Route::get('/home', function () {
+        if(Auth::user()->role==1){
+        return view('auth/home');
+    }
+    else if(Auth::user()->role==2){
+        return view('teacher/home');
+    }
+    else{
+        return view('home');
+    }
+    });
+});
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/teacher/home', ['middleware'=>['auth','teacher'],'uses'=>'TestController@index'])->name('home');
+Route::get('/registeradmin',['middleware'=>['auth','admin'],'uses'=>'PagesController@index']);
+// Route::get('/home', ['middleware'=>['auth','student'],'uses'=>'HomeController@index'])->name('home');
+

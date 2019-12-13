@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->float('percent');
             $table->string('dte');
             $table->string('password');
+            $table->string('role')->default('3');
             $table->rememberToken();
             $table->timestamps();
         });
