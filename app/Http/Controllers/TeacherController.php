@@ -49,7 +49,7 @@ class TeacherController extends Controller
         $user->email=$data->input('email');
         $user->phone=$data->input('phone');
         $user->role=$data->input('role');
-        $user->password=$data->input('password');
+        $user->password=bcrypt($data->input('password'));
         $user->address=NULL;
         $user->pin=NULL;
         $user->percent=NULL;
