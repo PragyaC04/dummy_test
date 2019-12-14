@@ -18,10 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('address');
-            $table->string('pin');
-            $table->float('percent');
-            $table->string('dte');
+            $table->string('address')->nullable();
+            $table->string('pin')->nullable();
+            $table->float('percent')->nullable();
+            $table->string('dte')->nullable();
             $table->string('password');
             $table->string('role')->default('3');
             $table->rememberToken();

@@ -38,10 +38,12 @@ Route::group(['middleware'=>['web','auth']],function(){
         return view('home');
     }
     });
+    
 });
 Auth::routes();
 
 // Route::get('/teacher/home', ['middleware'=>['auth','teacher'],'uses'=>'TestController@index'])->name('home');
 Route::get('/registeradmin',['middleware'=>['auth','admin'],'uses'=>'PagesController@index']);
 // Route::get('/home', ['middleware'=>['auth','student'],'uses'=>'HomeController@index'])->name('home');
-
+Route::resource('users','TeacherController');
+Route::get('/registeradmin/create',['middleware'=>['auth','admin'],'uses'=>'PagesController@create']);

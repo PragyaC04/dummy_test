@@ -87,7 +87,8 @@ filter: blur(5px);
                 </div>
             </div>
         </nav>
-
+        
+       
         @yield('content')
     </div>
 

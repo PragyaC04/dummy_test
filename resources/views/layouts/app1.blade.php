@@ -90,8 +90,9 @@ filter: blur(5px);
                 </div>
             </div>
         </nav>
-
-        @yield('content')
+        <div class='container'>
+        @include('layouts.message')
+        @yield('content')</div>
     </div>
 
     <!-- Scripts -->

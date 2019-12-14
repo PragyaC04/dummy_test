@@ -141,7 +141,7 @@
                             </div>
                         </div>
                         <!-- Conpass end -->
-                        <input id="role" type="hidden" class="form-control" name="role" value='1'>
+                        <input id="role" type="hidden" class="form-control" name="role" value='3'>
                         <!-- Register button Start-->
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4" style='left:70px'>
