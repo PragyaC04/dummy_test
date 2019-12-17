@@ -13,10 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        {!!Form::open(['action'=>'TeacherController@store','method'=>'POST'])!!}
+                    <div>
+                    {!!Form::open(['action'=>'TeacherController@store','method'=>'POST'])!!}
                         <div class="form-group">
-                        {{Form::label('name','Name')}}
-                          {{Form::text('name','',['class'=>'form-control','placeholder'=>'Name'])}}
+                            {{Form::label('name','Name')}}
+                            {{Form::text('name','',['class'=>'form-control','placeholder'=>'Name'])}}
                           </div>
                           <div class="form-group">
                           {{Form::label('email','Email')}}
@@ -47,8 +48,8 @@
                           </div>
                           <div> {{Form::submit('ADD', ['class' => 'btn btn-primary'])}}</div>
                         {!!Form::close()!!}
-
-                    </div>
+                        </div>
+                </div>
             </div>
         </div>
     </div>

@@ -14,9 +14,9 @@
 // Route::get('/t', function () {
 //     return view('auth/login1');
 // });
-// Route::get('/tt', function () {
-//     return view('auth/register1');
-// });
+Route::get('/tt', function () {
+    return view('rules');
+});
 
 //New Working Routes (Multi auth)
 Route::get('/', function () {
@@ -46,4 +46,4 @@ Auth::routes();
 Route::get('/registeradmin',['middleware'=>['auth','admin'],'uses'=>'PagesController@index']);
 // Route::get('/home', ['middleware'=>['auth','student'],'uses'=>'HomeController@index'])->name('home');
 Route::resource('users','TeacherController');
-Route::get('/registeradmin/create',['middleware'=>['auth','admin'],'uses'=>'PagesController@create']);
+Route::get('/addteacher',['middleware'=>['auth','admin'],'uses'=>'PagesController@addteacher']);

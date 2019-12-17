@@ -16,8 +16,8 @@ class PagesController extends Controller
           return view('auth/adminregister')->with('users',$users);      
         // return view('auth/adminregister');
     }
-    public function create(){
-      return view('auth/create');
+    public function addteacher(){
+      return view('auth/addteacher');
     }
     
 }

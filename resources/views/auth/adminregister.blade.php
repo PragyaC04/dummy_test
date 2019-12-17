@@ -43,7 +43,7 @@
                     @else
                         <p>You have no Teachers</p>
                     @endif
-                    <button class='btn btn-primary' onclick="location.href='/registeradmin/create'">ADD TEACHER</button>
+                    <button class='btn btn-primary' onclick="location.href='/addteacher'">ADD TEACHER</button>
             
                     </div>
             </div>

@@ -14,7 +14,7 @@
 		position: fixed;
 		width: 100vw;
 		height: 100vh;
-		background-image: url("build.png");
+		background-image: url("images/build.png");
 		background-position: center center;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
@@ -35,20 +35,21 @@
 	height: 650px;
 	padding: 80px 40px;
 	box-sizing: border-box;
-	background: rgba(8, 8, 8, 0.7);
+	background: white;
+	opacity: 75%;
 	border-radius:50px;
 	}
 	.Registration-form h3 {
 	margin: 0;
 	left:50%;
-	color: rgb(246, 249, 250);
+	color: black;
 	font-family:"sans-serif";
 	}
 	.Registration-form h1{
 	top:15%;
 	left:20%;
 	text-align:center;	
-	color:rgb(229, 234, 236);
+	color:black;
 	font-family:"sans-serif";
 	}
 	.Registration-form input[type="submit"] {
