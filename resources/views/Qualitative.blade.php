@@ -118,6 +118,7 @@
   </div>
 </nav>
 <form name="myForm" method="post" action = "qualitative" >
+{{ csrf_field() }}
 <div class="wrapper">
   <div class="content">
       <div class="fieldsContainer">

@@ -36,14 +36,15 @@ class QualitativeController extends Controller
      */
     public function store(Request $request)
     {
-       //return $request->all();
+     //  return $request->all();
        $rating = Qualitative::firstOrNew(['id' =>'1']);
-      $data=input::all('value');
+      $data= $request->all();
       //$count=1;
       $name=array_keys($data);
       $count=count($name);
-     // return $name;
-     for($d=1;$d<=$count;$d=$d+1)
+        //return ($data);
+     //return $name;
+     for($d=2;$d<=$count-1;$d=$d+1)
      // foreach($name as $n)
       {
             $rating->id= 1;
@@ -54,18 +55,7 @@ class QualitativeController extends Controller
        }
       //  $count=$count+1;
        $rating->save();
-      // $section='Qualitative';
-      //   return redirect()->route('final')->with('section',$section);
-
-      $data = array(
-        'title'=>'My App',
-        'Description'=>'This is New Application',
-        'author'=>'foo'
-        );
-     //   return View::make("/final", compact('data')); 
-     
-        return View::make('final')->with($data);
-    }
+     }
 
     public function edit($id)
     {
