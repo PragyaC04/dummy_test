@@ -72,7 +72,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user=User::create([
             'name' =>$data['name'],
             'email' =>$data['email'],
             'phone' =>$data['phone'],
@@ -82,7 +82,11 @@ class RegisterController extends Controller
             'dte' =>$data['dte'],
             'role' => $data['role'],
             'password' =>bcrypt($data['password']),
+            'token'=>str_random(26),
         ]);
+        $user->sendVerificationEmail();
+
+        return $user;
     }
     
 }

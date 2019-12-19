@@ -22,13 +22,13 @@ Route::get('/tt', function () {
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['middleware'=>['web','auth']],function(){
-    Route::get('/', function () {
-        return view('welcome');
-    });
 
+Route::group(['middleware'=>['web','auth']],function(){
     Route::get('/home', function () {
-        if(Auth::user()->role==1){
+    if(Auth::user()->token!=null){
+        return redirect('/')->with('status','please verify your email account');
+    }
+    else if(Auth::user()->role==1){
         return view('auth/home');
     }
     else if(Auth::user()->role==2){
@@ -37,11 +37,11 @@ Route::group(['middleware'=>['web','auth']],function(){
     else{
         return view('home');
     }
-    });
+    })->name('home');
     
 });
 Auth::routes();
-
+Route::get('/verify/{token}','VerifyController@verify')->name('verify');
 // Route::get('/teacher/home', ['middleware'=>['auth','teacher'],'uses'=>'TestController@index'])->name('home');
 Route::get('/registeradmin',['middleware'=>['auth','admin'],'uses'=>'PagesController@index']);
 // Route::get('/home', ['middleware'=>['auth','student'],'uses'=>'HomeController@index'])->name('home');

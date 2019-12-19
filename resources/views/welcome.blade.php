@@ -7,12 +7,28 @@
 
         <title>Laravel</title>
         <script src="{{asset('js/timer.js')}}"></script>
-
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
+        body:before{
+            
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("images/build.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px);
+            }
             html, body {
                 background-color: #fff;
                 color: #636b6f;
@@ -65,12 +81,20 @@
         </style>
     </head>
     <body onload="countdown();">
+    
             <div class="content">
-                <div class="title m-b-md">
-                    Online Fe Test Module
-                </div>
+            <div class='container'style='font-weight: bold;padding-top:10px'>
+                    @if (session('status'))
+                            <div class="alert alert-danger">
+                                {{ session('status') }}
+                            </div>
+                    @endif
+            </div>
+            <div class="title m-b-md">
+                Online Fe Test Module
+            </div>
             </div><br><br>
-        <!-- <div> 
+        <!-- <div class='content'> 
         Time Left :: 
         <input id="minutes" type="text" style="width: 20px; 
              border: none; font-size: 16px;  
