@@ -28,7 +28,43 @@ background-size: cover;
 -o-filter: blur(5px);
 -ms-filter: blur(5px);
 filter: blur(5px);
-}</style>
+}
+#btn {
+		background-color: #8AB4F8;
+		border: none;
+		color: black;
+		
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 20px;
+		margin: 54px 2px;
+		cursor: pointer;
+		border-radius: 7px;
+		position : center;
+		font-family:"sans-serif";
+	}
+			
+	#btn:hover{
+		color: white;
+	}
+	h3 {
+	margin: 0;
+	left:50%;
+	color: black;
+	font-family:"sans-serif";
+    font-size:20px;
+    padding:30px;
+    text-align:left;
+	}
+	.Registration-form h1{
+	top:15%;
+	left:20%;
+	text-align:center;	
+	color:black;
+	font-family:"sans-serif";
+	}
+</style>
 </head>
 <body >
     <div id="app">

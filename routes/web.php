@@ -15,7 +15,7 @@
 //     return view('auth/login1');
 // });
 Route::get('/tt', function () {
-    return view('rules');
+    return view('auth/resultadmin');
 });
 
 //New Working Routes (Multi auth)
@@ -47,17 +47,17 @@ Route::get('/registeradmin',['middleware'=>['auth','admin'],'uses'=>'PagesContro
 // Route::get('/home', ['middleware'=>['auth','student'],'uses'=>'HomeController@index'])->name('home');
 Route::resource('users','TeacherController');
 Route::get('/addteacher',['middleware'=>['auth','admin'],'uses'=>'PagesController@addteacher']);
-Route::post('/qualitative','QualitativeController@store');
-Route::get('/qualitative','QuestionsController@qualitative');
+Route::post('/qualitative',['middleware'=>['auth','student'],'uses'=>'QualitativeController@store']);
+Route::get('/qualitative',['middleware'=>['auth','student'],'uses'=>'QuestionsController@qualitative']);
 
-Route::get('/comprehension','QuestionsController@comprehension');
-Route::post('/comprehension','ComprehensionController@store');
+Route::get('/comprehension',['middleware'=>['auth','student'],'uses'=>'QuestionsController@comprehension']);
+Route::post('/comprehension',['middleware'=>['auth','student'],'uses'=>'ComprehensionController@store']);
 
-Route::post('/analytical','AnalyticalController@store');
-Route::get('/analytical','QuestionsController@analytical');
+Route::post('/analytical',['middleware'=>['auth','student'],'uses'=>'AnalyticalController@store']);
+Route::get('/analytical',['middleware'=>['auth','student'],'uses'=>'QuestionsController@analytical']);
 
-Route::post('creativity','CreativityController@store');
-Route::get('creativity','QuestionsController@creativity');
+Route::post('creativity',['middleware'=>['auth','student'],'uses'=>'CreativityController@store']);
+Route::get('creativity',['middleware'=>['auth','student'],'uses'=>'QuestionsController@creativity']);
 
 Route::get('/final', function () {
     return view('final');

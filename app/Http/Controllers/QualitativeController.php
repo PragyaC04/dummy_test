@@ -7,6 +7,7 @@ use App\Qualitative;
 use Illuminate\Support\Facades\Input;
 use Redirect;
 use View;
+use App\User;
 
 class QualitativeController extends Controller
 {
@@ -37,7 +38,7 @@ class QualitativeController extends Controller
     public function store(Request $request)
     {
      //  return $request->all();
-       $rating = Qualitative::firstOrNew(['id' =>'1']);
+       $rating = Qualitative::firstOrNew(['id' =>auth()->user()->id]);
       $data= $request->all();
       //$count=1;
       $name=array_keys($data);
@@ -47,14 +48,16 @@ class QualitativeController extends Controller
      for($d=2;$d<=$count-1;$d=$d+1)
      // foreach($name as $n)
       {
-            $rating->id= 1;
+            $rating->id=auth()->user()->id;
             $f="SEC1_ANS".$name[$d-1];
-            $rating->$f = $data[$d];
+            $rating->$f = $data[$name[$d-1]];
             echo $f." ";
-            echo $data[$d];    
+            echo $data[$name[$d-1]];    
        }
       //  $count=$count+1;
        $rating->save();
+
+       return redirect('/comprehension');
      }
 
     public function edit($id)

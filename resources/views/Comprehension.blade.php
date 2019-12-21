@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Comprehension</title>
   <meta charset="utf-8">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <style>
  html,body,
@@ -80,11 +81,13 @@
   </style>
 </head>
 <body>
+<script src="{{ asset('js/app.js') }}"></script>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
     <li class="nav-item ">
@@ -100,8 +103,8 @@
         <a class="nav-link" href="/analytical">Analytical Test</a>
       </li>
       </ul>
-      <div class="navbar-collapse ">
-        <ul class="navbar-nav ml-auto">
+      <div class="collapse navbar-collapse ">
+        <ul class="nav navbar-nav navbar-right ml-auto">
         <li class="nav-item">
             <button type="button" class="btn btn-success nav-link" id="timer">60:00</button>
             </li>
@@ -109,9 +112,8 @@
             <li class="nav-item">
             <button type="button" class="btn btn-success nav-link">Submit Test</button>
             </li>
-           
         </ul>
-      </div>  
+        </div>
   </div>
 </nav>
 
@@ -184,7 +186,7 @@
     </div>
 
     <button type="button" class="btn qs" data-toggle="modal" data-target="#myModal">Submit Section</button>
-    <p id="time">Hello</p></div>
+    </div>
 
 </div>
 <!-- Modal -->
@@ -211,6 +213,7 @@
 </form>
   </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
     function incTimer() {
