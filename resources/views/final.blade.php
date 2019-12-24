@@ -10,136 +10,213 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="{{asset('js')}}/event.js"></script>
   <script src="{{asset('css')}}/style.css"></script>
-  <style>
- html,body,
-.wrapper{
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.wrapper{
-    display: grid;
-  grid-template-rows: 520px;
-  overflow:auto;
-  margin-top:30px;
-}
-
-.content{
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  grid-gap: 10px;
-  overflow-y:auto;
-}
-
-.fieldsContainer{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(70px,1fr));
-  grid-auto-rows: 50px;
-  grid-gap: 10px;
-  overflow-y:scroll;/*added*/
-}
-
-.section2{
-    overflow-y:scroll;
-}
-
-.card1{
-  padding: 10px;
-  background: #ddd;
-}
-:target {
-  border: 2px solid #D4D4D4;
-  background-color: #D5D8DC ;
-}
-
-.qs{
-  background-color:#141414;
-  color:#ffffff;
-}
-.qs:hover{
-  background-color:#141414;
-  color:#FCF3CF;
-}
-
-@media (max-width: 900px) {
-    .fieldsContainer{
-      display: grid;
-      grid-template-columns: 1fr;
-    grid-auto-rows: 50px;
-  overflow-y:scroll;/*added*/
-
-    }
-    .content{
-  display: grid;
-  grid-template-columns:0.25fr 1fr;
-  overflow-y:auto;
-}
-}
-
-</style>
-  
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-    <li class="nav-item active">
-        <a class="nav-link" href="#">Qualitative Analysis <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="/comprehension">Comprehension</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/creativity">Creativity test</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/analytical">Analytical Test</a>
-      </li>
-      </ul>
-      <div class="navbar-collapse ">
-        <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <button type="button" class="btn btn-success nav-link" id="timer">60:00</button>
-            </li>
-            &nbsp;&nbsp;
-            <li class="nav-item">
-            <button type="button" class="btn btn-success nav-link">Submit Test</button>
-            </li>
-           
-        </ul>
-      </div>  
+
+<br>
+
+<?php $x = array();
+$marks=array();
+$i=1; ?>
+@foreach($qans as $qan)
+                 <?php $x[$i] = $qan->correct;
+                 $marks[$i]=$qan->marks;
+                 $i=$i+1;
+                 ?>                  
+@endforeach
+<?php
+//echo implode(" ",$x);
+echo "<br>";
+?>
+
+<?php $y = array();
+$j=1; ?>
+@foreach($qans1 as $qan1)
+<?php 
+for($j=1;$j<=20;$j=$j+1)
+{$a="SEC1_ans".$j;
+//echo $a;
+$y[$j]=$qan1->$a;
+//echo ($y[$j]);
+}?> 
+@endforeach
+<?php
+//echo implode(" ",$y);
+?>
+
+
+<?php
+$count = 0;
+for($k=1;$k<$i;$k=$k+1)
+{
+if ($x[$k] == $y[$k]) {
+$count=$count+1;
+}
+}
+?>
+
+<?php $x1 = array();
+$marks=array();
+$i1=1; ?>
+@foreach($cans as $can)
+                 <?php $x1[$i1] = $can->correct;
+                 $marks[$i1]=$can->marks;
+                 $i1=$i1+1;
+                 ?>                  
+@endforeach
+<?php
+//echo implode(" ",$marks);
+?>
+
+<?php $y1 = array();
+$j1=1; ?>
+@foreach($cans1 as $can1)
+<?php 
+for($j1=1;$j1<=20;$j1=$j1+1)
+{$a="COMP_ANS".$j1;
+//echo $a;
+$y1[$j1]=$can1->$a;
+}?> 
+@endforeach
+<?php
+//echo implode("<br> ",$y);
+?>
+
+
+<?php
+$count1 = 0;
+for($k1=1;$k1<$i1;$k1=$k1+1)
+{
+if ($x1[$k1] == $y1[$k1]) {
+$count1=$count1+$marks[$k1];
+}
+//echo $count1;
+}
+?>
+
+<?php $x2 = array();
+$marks2=array();
+$i2=1; ?>
+@foreach($crans as $cran)
+                 <?php $x2[$i2] = $cran->correct;
+                 $marks2[$i2]=$cran->marks;
+                 $i2=$i2+1;
+                 ?>                  
+@endforeach
+<?php
+//echo implode(" ",$marks);
+?>
+
+<?php $y2 = array();
+$j2=1; ?>
+@foreach($crans1 as $cran1)
+<?php 
+for($j2=1;$j2<=20;$j2=$j2+1)
+{$a="CRE_ANS".$j2;
+//echo $a;
+$y2[$j2]=$cran1->$a;
+}?> 
+@endforeach
+<?php
+//echo implode("<br> ",$y);
+?>
+
+
+<?php
+$count2 = 0;
+for($k2=1;$k2<$i2;$k2=$k2+1)
+{
+if ($x2[$k2] == $y2[$k2]) {
+$count2=$count2+$marks2[$k2];
+}
+//echo $count2;
+}
+?>
+
+<?php $x3 = array();
+$marks3=array();
+$i3=1; ?>
+@foreach($anans as $anan)
+                 <?php $x3[$i3] = $anan->correct;
+                 $marks3[$i3]=$anan->marks;
+                 $i3=$i3+1;
+                 ?>                  
+@endforeach
+<?php
+//echo implode(" ",$marks);
+?>
+
+<?php $y23 = array();
+$j3=1; ?>
+@foreach($anans1 as $anan1)
+<?php 
+for($j3=1;$j3<=20;$j3=$j3+1)
+{$a="ANA_ANS".$j3;
+//echo $a;
+$y3[$j3]=$anan1->$a;
+}?> 
+@endforeach
+<?php
+//echo implode("<br> ",$y);
+?>
+
+
+<?php
+$count3 = 0;
+for($k3=1;$k3<$i3;$k3=$k3+1)
+{
+if ($x3[$k3] == $y3[$k3]) {
+$count3=$count3+$marks3[$k3];
+}
+//echo $count2;
+}
+?>
+
+<br>
+<div class="card text-center">
+  <div class="card-header">
+     <b>Result</b>
   </div>
-</nav>
-{{$title}}
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Section</th>
+      <th scope="col">Marks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Qualitative Analysis</td>
+      <td><?php echo $count; ?></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Comprehension</td>
+      <td><?php echo $count1;?></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Creativity Test</td>
+      <td><?php echo $count2;?></td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Analytical test</td>
+      <td><?php echo $count3;?></td>
+    </tr>
+  </tbody>
+</table>
+  <div class="card-footer text-muted">
+   <p style="float:right;"> Total Score : <?php echo $count4=$count+$count1+$count2+$count3;?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+  </div>
+</div>
+
 <script>
-    function incTimer() {
-        var currentMinutes = Math.floor(totalSecs / 60);
-        var currentSeconds = totalSecs % 60;
-        if(currentSeconds <= 9) currentSeconds = "0" + currentSeconds;
-        if(currentMinutes <= 9) currentMinutes = "0" + currentMinutes;
-        totalSecs--;
-        localStorage.setItem("time",totalSecs);
-        $("#timer").text(currentMinutes + ":" + currentSeconds);
-        setTimeout('incTimer()', 1000);
-    }
-
-    if(localStorage.getItem("time"))
-    {totalSecs = localStorage.getItem("time");}
-    else
-    totalSecs=3600;
-
-    $(document).ready(function() {
-      
-            incTimer();
-    });
+window.onload=function(){
+  localStorage.clear();
+}
 </script>
 </body>
 </html>

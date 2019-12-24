@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Analytical</title>
+  <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -84,6 +84,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -117,11 +118,12 @@
   </div>
 </nav>
 <form name="myForm" method="post" action = "analytical">
+{{ csrf_field() }}
 <div class="wrapper">
   <div class="content">
       <div class="fieldsContainer">
       @foreach($users2 as $user2)
-      <a href="#{{$user2->qid}}"><div class="card1" id="card{{$user2->qid}}"></div></a>
+      <a href="#{{$user2->qid}}"><div name="card1" class="card1" id="card{{$user2->qid}}"></div></a>
       @endforeach
       </div>
     <div class="section2">
@@ -210,9 +212,25 @@
 </form>
   </div>
 </div>
+<div id="AutoSubmit" class="modal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="alert alert-dark" role="alert">
+      <p>The timer has run out!Kindly submit your test now!</p>
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit"  class="btn qs" value="submit" onclick="window.location='{{ url('final') }}'" >Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
     function incTimer() {
+      if(totalSecs>=0){
         var currentMinutes = Math.floor(totalSecs / 60);
         var currentSeconds = totalSecs % 60;
         if(currentSeconds <= 9) currentSeconds = "0" + currentSeconds;
@@ -221,7 +239,14 @@
         localStorage.setItem("time",totalSecs);
         $("#timer").text(currentMinutes + ":" + currentSeconds);
         setTimeout('incTimer()', 1000);
-    }
+      }
+       else
+      {
+      $("#AutoSubmit").css('display','block');
+      $(".navbar").fadeTo(500,0.1);
+       $(".FormSubmit").fadeTo(500,0.1);
+      }
+        }
     if(localStorage.getItem("time"))
     {totalSecs = localStorage.getItem("time");}
     else
@@ -239,47 +264,53 @@ var parent1= $(".fieldsContainer");
 var divs=parent.children();
 var divs1=parent1.children();
 var a=divs.length;
+var c=a;
 var arr=[];
 var i=0;
 while(a){
   i++;
   var x=Math.floor(Math.random()*a);
   parent.append(divs.splice(x,1)[0]);
-  arr[i]=$(".section2 .card:last").attr('id');
-  $(".section2 .card:last").attr('id',i);
-
-  if(localStorage.getItem("an"+i)!==null)
-   {var q=localStorage.getItem("an"+i);
-    $('input:radio[name='+i+']').filter('[value='+an+']').click();
-    //$("input[value=\""+localStorage.getItem('q'+i)+"\"]").click();
-   }
+  arr[i]=$(".section2 .card:last").attr('id',i);
+ $(".section2 .card:last").attr('id');
   a=a-1;
  }
- $(".card1").click(function() {
-  var c=$(this).attr('class')
-
+ var i=0;
+ while(c){
+  i++;
+  if(localStorage.getItem("an"+i)!==null)
+   {var an=localStorage.getItem("an"+i);
+    $('input:radio[name='+i+']').filter('[value='+an+']').click();
+    var cl=$('input:radio[name='+i+']').parent().parent().parent().attr("id");
+      $('#card'+cl).css('background-color', '#ABEBC6');
+  
+  
+    //$('.'+cl).css('background-color', '#ABEBC6');
+     //$("input[value=\""+localStorage.getItem('q'+i)+"\"]").click();
+   }
+   c=c-1;
+ } $("div[name='card1']").click(function() {
     $('html,body').animate({
         scrollTop: $("#{{$user2->qid}}").offset().top-10000
     }, 2000);
-});
-});
-
-$('.card1').each(function(){
-  $("#card"+y).html(y);
-  y=y+1;
-
-
 });
 $(".card-text > input[type=radio]").click(function(){
   var myClass=$(this).parent().parent().parent().attr("id");
   var radio=$(this).attr('class');
   localStorage.setItem("an"+radio,$(this).val());
-  $("#al").append("an"+radio,$(this).val());
-    $('input[type=radio]').each(function(){
-    $('#card'+myClass).css('background-color', '#ABEBC6');
-    });
-
+  $('#card'+myClass).css('background-color', '#ABEBC6');
+  
   });
+});
+
+$("div[name='card1']").each(function(){
+  $("#card"+y).html(y);
+  y=y+1;
+});
+
+window.onload=function(){
+  localStorage.clear();
+}
 
 </script>
 </body>

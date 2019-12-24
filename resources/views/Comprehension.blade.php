@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Comprehension</title>
+  <title>Bootstrap Example</title>
   <meta charset="utf-8">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <style>
  html,body,
@@ -81,13 +80,11 @@
   </style>
 </head>
 <body>
-<script src="{{ asset('js/app.js') }}"></script>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+  <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
     <li class="nav-item ">
@@ -103,8 +100,8 @@
         <a class="nav-link" href="/analytical">Analytical Test</a>
       </li>
       </ul>
-      <div class="collapse navbar-collapse ">
-        <ul class="nav navbar-nav navbar-right ml-auto">
+      <div class="navbar-collapse ">
+        <ul class="navbar-nav ml-auto">
         <li class="nav-item">
             <button type="button" class="btn btn-success nav-link" id="timer">60:00</button>
             </li>
@@ -112,12 +109,14 @@
             <li class="nav-item">
             <button type="button" class="btn btn-success nav-link">Submit Test</button>
             </li>
+           
         </ul>
-        </div>
+      </div>  
   </div>
 </nav>
 
 <form name="myForm" method="post" formaction="comprehension">  
+{{ csrf_field() }}
 <div class="wrapper">
   <div class="content">
       <div class="fieldsContainer">
@@ -131,12 +130,12 @@
     >
     @if($user3->para)
   <div class="card-header" style="display:inline-block;">
-  <p class="card-text" style="float:left;"><b>{{ $user3->qid }}</b>&nbsp;&nbsp;
+  <p class="card-text" style="float:left;">&nbsp;&nbsp;
             {{ $user3->para }}<br><br>
   </div>
   @endif
   <div class="card-header" style="display:inline-block;" >
-  <p class="card-text" style="float:left;"><b>{{ $user3->qid }}</b>&nbsp;&nbsp;
+  <p class="card-text" style="float:left;">&nbsp;&nbsp;
   @if($user3->question)
             {{ $user3->question }}
       @endif
@@ -186,7 +185,6 @@
     </div>
 
     <button type="button" class="btn qs" data-toggle="modal" data-target="#myModal">Submit Section</button>
-    </div>
 
 </div>
 <!-- Modal -->
@@ -213,13 +211,29 @@
 </form>
   </div>
 </div>
+<div id="AutoSubmit" class="modal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="alert alert-dark" role="alert">
+      <p>The timer has run out!Kindly submit your test now!</p>
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit"  class="btn qs" value="submit" onclick="window.location='{{ url('final') }}'" >Submit</button>
+      </div>
+    </div>
 
+  </div>
+</div>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
     function incTimer() {
       if(localStorage.getItem("time1")!==null){
         $("#time").append(" "+localStorage.getItem("time1"));
       }
+         if(totalSecs>=0){
         var currentMinutes = Math.floor(totalSecs / 60);
         var currentSeconds = totalSecs % 60;
         if(currentSeconds <= 9) currentSeconds = "0" + currentSeconds;
@@ -228,6 +242,14 @@
         localStorage.setItem("time",totalSecs);
         $("#timer").text(currentMinutes + ":" + currentSeconds);
         setTimeout('incTimer()', 1000);
+      }
+       else
+      {
+        
+      $("#AutoSubmit").css('display','block');
+      $(".navbar").fadeTo(500,0.1);
+       $(".FormSubmit").fadeTo(500,0.1);
+      }
     }
 
     if(localStorage.getItem("time"))
@@ -239,17 +261,42 @@
     });
 </script>
 <script>
-$(".card1").click(function() {
+$(document).ready(function(){
+var parent= $(".section2");
+var divs=parent.children();
+var a=divs.length;
+var i=0;
+ while(a){
+  i++;
+  if(localStorage.getItem("comp"+i)!==null)
+   {var comp=localStorage.getItem("comp"+i);
+    $('input:radio[name='+i+']').filter('[value='+comp+']').click();
+    var cl=$('input:radio[name='+i+']').parent().parent().parent().attr("id");
+      $('#card'+cl).css('background-color', '#ABEBC6');
+  
+  
+    //$('.'+cl).css('background-color', '#ABEBC6');
+     //$("input[value=\""+localStorage.getItem('q'+i)+"\"]").click();
+   }
+   a=a-1;
+ }
+
+ $("div[name='card1']").click(function() {
     $('html,body').animate({
         scrollTop: $("#{{$user3->qid}}").offset().top-10000
     }, 2000);
 });
 $(".card-text > input[type=radio]").click(function(){
   var myClass=$(this).attr("class");
+  localStorage.setItem("comp"+myClass,$(this).val());
   $('input[type=radio]').each(function(){
     $('#card'+myClass).css('background-color', '#ABEBC6');
   });
 });
+});
+
+
+
 </script>
 </body>
 </html>

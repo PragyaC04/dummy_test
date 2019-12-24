@@ -38,7 +38,6 @@ Route::group(['middleware'=>['web','auth']],function(){
         return view('home');
     }
     })->name('home');
-    
 });
 Auth::routes();
 Route::get('/verify/{token}','VerifyController@verify')->name('verify');
@@ -59,10 +58,14 @@ Route::get('/analytical',['middleware'=>['auth','student'],'uses'=>'QuestionsCon
 Route::post('creativity',['middleware'=>['auth','student'],'uses'=>'CreativityController@store']);
 Route::get('creativity',['middleware'=>['auth','student'],'uses'=>'QuestionsController@creativity']);
 
-Route::get('/final', function () {
-    return view('final');
-})->name('final');
+Route::post('final','ResultController@qcorrect')->name('final');
+Route::get('final','ResultController@qcorrect')->name('final');
 
-Route::post('/final', function () {
-    return view('final');
-})->name('final');
+Route::get('/viewfinal', function () {
+    return view('viewfinal');
+})->name('viewfinal');
+
+Route::get('/result',['middleware'=>['auth','teacher'],'uses'=>'ResultController@fetchall'])->name('result');
+Route::get('/result',['middleware'=>['auth','admin'],'uses'=>'ResultController@fetchall'])->name('result');
+
+Route::any('marks','MarksController@store')->name('marks');

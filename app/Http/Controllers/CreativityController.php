@@ -36,7 +36,7 @@ class CreativityController extends Controller
      */
     public function store(Request $request)
     {
-        $rating = Qualitative::firstOrNew(['id' =>'1']);
+        $rating = Qualitative::firstOrNew(['id' =>auth()->user()->id]);
         //return $request->all();
      //  $rating = new qualitative;
        $data=input::all('value');
@@ -44,20 +44,21 @@ class CreativityController extends Controller
        $name=array_keys($data);
        $count=count($name);
       // return $name;
-      for($d=1;$d<=$count;$d=$d+1)
+      for($d=2;$d<=$count;$d=$d+1)
       // foreach($name as $n)
-       {
-             $rating->id= 1;
-             $f="CRE_ANS".$name[$d-1];
-             echo $f." ";
-             echo $data[$d];
-             $rating->$f = $data[$d];
+       { $rating->id= auth()->user()->id;
+        $f="CRE_ANS".$name[$d-1];
+        $rating->$f = $data[$name[$d-1]];
+        //echo " <br> ".$f." ";
+        //echo $data[$name[$d-1]];   
                  
         }
        //  $count=$count+1;
         $rating->save();
+        $section='Creativity';
+        return view('viewfinal',['section'=>$section]);
         
-       return redirect('/final');
+      
      }
 
     /**

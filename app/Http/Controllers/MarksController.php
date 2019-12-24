@@ -9,14 +9,16 @@ use Redirect;
 use View;
 use App\User;
 
-class QualitativeController extends Controller
+class MarksController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index()
+    {
+        //
     }
 
     /**
@@ -37,44 +39,40 @@ class QualitativeController extends Controller
      */
     public function store(Request $request)
     {
-        
-       //return $request->all();
-       $rating = Qualitative::firstOrNew(['id' =>'23']);
-       //$w=auth()->user()->id;
-      $data= $request->all();
- //     $rating->email=auth()->user()->email;
-      //$count=1;
-      $name=array_keys($data);
-      $count=count($name);
-        //return ($data);
-     //return $name;
-     
-     for($d=2;$d<=$count-1;$d=$d+1)
-     // foreach($name as $n)
-      {
-            $rating->id='23';
-            $f="SEC1_ANS".$name[$d-1];
-            $rating->$f = $data[$name[$d-1]];  
-       }
-      //  $count=$count+1;
-       $rating->save();
-        $section='Qualitative';
-        return view('viewfinal',['section'=>$section]);
-      
-
-    /*  $data = array(
-        'title'=>'My App',
-        'Description'=>'This is New Application',
-        'author'=>'foo'
-        );
-     //   return View::make("/final", compact('data')); 
-     
-        return View::make('final')->with($data);*/
+        $rating = Qualitative::firstOrNew(['id' =>auth()->user()->id]);
+      return  $data= $request->all();
+        $rating->email=auth()->user()->email;
+        $name=array_keys($data);
+        $count=count($name);
+        $rating->id=auth()->user()->id;
+        $rating->qualt =$data[1];
+        $rating->compt =$data[2];
+        $rating->creat =$data[3];
+        $rating->analt =$data[4];
+    
+        $rating->marks =$data[5];  
+        $rating->save();
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
-     
+        //
     }
 
     /**

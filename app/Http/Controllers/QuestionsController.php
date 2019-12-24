@@ -12,12 +12,9 @@ class QuestionsController extends Controller
     private $setid;
     public function qualitative(){
         $this->setid=auth()->user()->id%2+1;
-        if($this->setid==1){
-            $users = DB::select('select * from qualitative_analysis where setid="1"');
-        }
-        else if($this->setid==2){
-            $users = DB::select('select * from qualitative_analysis where setid="2"');
-        }
+ 
+            $users = DB::select(DB::raw("select * from qualitative_analysis where setid='$this->setid'"));
+        
         return view('qualitative',['users'=>$users]);
     }
     public function creativity(){

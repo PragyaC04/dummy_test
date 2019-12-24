@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Qualitative</title>
+  <title>FE TEST MODULE</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -78,12 +78,16 @@
   overflow-y:auto;
 }
 }
+ #AutoSubmit{
+   display:none;
+ }
 
 </style>
   
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -109,14 +113,14 @@
             </li>
             &nbsp;&nbsp;
             <li class="nav-item">
-            <button type="button" class="btn btn-success nav-link">Submit Test</button>
+            <button type="button" class="btn btn-success nav-link" onclick="window.location='{{ url('final') }}'" >Submit Test</button>
             </li>
            
         </ul>
       </div>  
   </div>
 </nav>
-<form name="myForm" method="post" action = "qualitative" >
+<form name="myForm" class="FormSubmit" method="post" action = "qualitative" >
 {{ csrf_field() }}
 <div class="wrapper">
   <div class="content">
@@ -143,12 +147,12 @@
   <div class="card-body">
 
     <p class="card-text" > 
-    <input type="radio" name="{{$user->qid}}" class="{{$user->qid}}" value="1" required>   @if($user->option1img)
+    <input type="radio" name="{{$user->qid}}" class="{{$user->qid}}" value="1" >   @if($user->option1img)
      <img src="data:image/png;base64,{{chunk_split(base64_encode($user->option1img))}}">
       @endif
       @if($user->option1)
       {{$user->option1}}
-      @endif</input>
+      @endif
    </p>
       <p class="card-text" > 
       <input type="radio" name="{{$user->qid}}" value="2" class="{{$user->qid}}">
@@ -190,8 +194,7 @@
 
 
 
-<button type="button" class="btn qs" data-toggle="modal" data-target="#myModal">Submit Section</button>
-<p id="al"></p>
+<button type="button" id="SubmitButtonFinal" class="btn qs" data-toggle="modal" data-target="#myModal">Submit Section</button>
     </div>
 
 </div>
@@ -206,21 +209,40 @@
       </div>
       <div class="modal-body">
         <p>Are you sure you want to submit Qualitative Section ?</p>
-        <small style="color:red;">*Note: No changes would be permitted after submission</small>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn qs" data-dismiss="modal">Close</button>
-        <button type="submit"  class="btn qs" value="submit" action="{{URL::to('final')}}">Submit</button>
+        <button type="submit"  class="btn qs" value="submit">Submit</button>
       </div>
     </div>
 
   </div>
 </div>
+
+
 </form>
-<input type="hidden" value="Qualitative" name="qualitative">
+<div id="AutoSubmit" class="modal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="alert alert-dark" role="alert">
+      <p>The timer has run out!Kindly submit your test now!</p>
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit"  class="btn qs" value="submit" onclick="window.location='{{ url('final') }}'" >Submit</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
     function incTimer() {
+      if(totalSecs>=0){
         var currentMinutes = Math.floor(totalSecs / 60);
         var currentSeconds = totalSecs % 60;
         if(currentSeconds <= 9) currentSeconds = "0" + currentSeconds;
@@ -229,12 +251,19 @@
         localStorage.setItem("time",totalSecs);
         $("#timer").text(currentMinutes + ":" + currentSeconds);
         setTimeout('incTimer()', 1000);
-    }
+      }
+      else
+      {
+      $("#AutoSubmit").css('display','block');
+      $(".navbar").fadeTo(500,0.1);
+       $(".FormSubmit").fadeTo(500,0.1);
+      }
+        }
 
     if(localStorage.getItem("time"))
     {totalSecs = localStorage.getItem("time");}
     else
-    totalSecs=3600;
+    totalSecs=12;
 
     $(document).ready(function() {
       
@@ -258,7 +287,7 @@ while(a){
   i++;
   var x=Math.floor(Math.random()*a);
   parent.append(divs.splice(x,1)[0]);
-  $(".section2 .card:last").attr('id',i);
+  arr[i]=$(".section2 .card:last").attr('id',i);
  $(".section2 .card:last").attr('id');
   a=a-1;
  }
@@ -297,9 +326,6 @@ $("div[name='card1']").each(function(){
   y=y+1;
 });
 
-/*window.onload=function(){
-  localStorage.clear();
-}*/
 </script>
 </body>
 </html>

@@ -37,25 +37,25 @@ class ComprehensionController extends Controller
     public function store(Request $request)
     {
         //return $request->all();
-       $rating = Qualitative::firstOrNew(['id' =>'1']);
+       $rating = Qualitative::firstOrNew(['id' =>auth()->user()->id]);
        $data=input::all('value');
        //$count=1;
        $name=array_keys($data);
        $count=count($name);
       // return $name;
-      for($d=1;$d<=$count;$d=$d+1)
+      for($d=2;$d<=$count;$d=$d+1)
       // foreach($name as $n)
        {
-             $rating->id= 1;
+             $rating->id= auth()->user()->id;
              $f="COMP_ANS".$name[$d-1];
-             $rating->$f = $data[$d];
-             echo $f." ";
-             echo $data[$d];    
+             $rating->$f = $data[$name[$d-1]];
+             //echo $f." ";
+             //echo $data[$name[$d-1]];    
         }
        //  $count=$count+1;
         $rating->save();
-        
-       return redirect('/final');
+        $section='Comprehension';
+        return view('viewfinal',['section'=>$section]);
     }
 
     /**

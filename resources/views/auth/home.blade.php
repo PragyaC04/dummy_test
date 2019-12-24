@@ -212,7 +212,7 @@ height:50px;
 	
 
 	<div class="col-sm-7 col-lg-3 mb-3">
-	  <a href="https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp" class="custom-card">
+	  <a href="/result" class="custom-card">
         <div class="card card-block h-55 new_test">
           <img src="images/result.png">
 		  <div class="alert alert-info fade in text-center" role="alert"> <b> View Result</b></div>
