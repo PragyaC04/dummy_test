@@ -316,6 +316,7 @@ $(".card-text > input[type=radio]").click(function(){
   var myClass=$(this).parent().parent().parent().attr("id");
   var radio=$(this).attr('class');
   localStorage.setItem("q"+radio,$(this).val());
+  $.cookie("q"+radio, localStorage.getItem("q"+radio));
   $('#card'+myClass).css('background-color', '#ABEBC6');
   
   });

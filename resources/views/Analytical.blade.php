@@ -209,7 +209,7 @@
 
   </div>
 </div>
-</form>
+
   </div>
 </div>
 <div id="AutoSubmit" class="modal" role="dialog">
@@ -222,11 +222,12 @@
     </div>
       </div>
       <div class="modal-footer">
-        <button type="submit"  class="btn qs" value="submit" onclick="window.location='{{ url('final') }}'" >Submit</button>
-      </div>
+      <button type="submit"  class="btn qs" value="submit" id="Auto">Submit</button>
+        </div>
     </div>
   </div>
 </div>
+</form>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
     function incTimer() {
@@ -245,6 +246,7 @@
       $("#AutoSubmit").css('display','block');
       $(".navbar").fadeTo(500,0.1);
        $(".FormSubmit").fadeTo(500,0.1);
+      
       }
         }
     if(localStorage.getItem("time"))
@@ -308,9 +310,13 @@ $("div[name='card1']").each(function(){
   y=y+1;
 });
 
-window.onload=function(){
+$('#Auto').click(function(){
+  $('form[name=myForm]').attr('action','final');
+  $('form[name=myForm]').submit();
+});
+/*window.onload=function(){
   localStorage.clear();
-}
+}*/
 
 </script>
 </body>

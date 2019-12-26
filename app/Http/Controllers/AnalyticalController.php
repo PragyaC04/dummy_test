@@ -37,7 +37,7 @@ class AnalyticalController extends Controller
     public function store(Request $request)
     {
         $rating = Qualitative::firstOrNew(['id' =>auth()->user()->id]);
-        $data=input::all('value');
+        $data= $request->all();
         //$count=1;
         $name=array_keys($data);
         $count=count($name);
@@ -52,8 +52,10 @@ class AnalyticalController extends Controller
               //echo $data[$name[$d-1]];    
          }
          $rating->save();
-         $section='Analytical';
-        return view('viewfinal',['section'=>$section]);
+         $submitted[3]=1;
+         //$section='Analytical';
+      //return view('viewfinal',['section'=>$section]);
+     return redirect()->route('qualitative');
     }
 
     /**

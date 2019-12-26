@@ -55,6 +55,7 @@ class CreativityController extends Controller
         }
        //  $count=$count+1;
         $rating->save();
+        $submitted[2]=1;
         $section='Creativity';
         return view('viewfinal',['section'=>$section]);
         

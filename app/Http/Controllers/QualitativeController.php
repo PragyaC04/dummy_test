@@ -39,8 +39,9 @@ class QualitativeController extends Controller
     {
         
        //return $request->all();
-       $rating = Qualitative::firstOrNew(['id' =>'23']);
+       $rating = Qualitative::firstOrNew(['id' =>auth()->user()->id]);
        //$w=auth()->user()->id;
+       $data=input::all('value');
       $data= $request->all();
  //     $rating->email=auth()->user()->email;
       //$count=1;
@@ -52,14 +53,17 @@ class QualitativeController extends Controller
      for($d=2;$d<=$count-1;$d=$d+1)
      // foreach($name as $n)
       {
-            $rating->id='23';
+            $rating->id=auth()->user()->id;
             $f="SEC1_ANS".$name[$d-1];
             $rating->$f = $data[$name[$d-1]];  
        }
       //  $count=$count+1;
+      echo $submit;
        $rating->save();
+       Config::set('foo.bar', 'test');
         $section='Qualitative';
         return view('viewfinal',['section'=>$section]);
+        
       
 
     /*  $data = array(

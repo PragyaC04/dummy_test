@@ -38,12 +38,12 @@ class ComprehensionController extends Controller
     {
         //return $request->all();
        $rating = Qualitative::firstOrNew(['id' =>auth()->user()->id]);
-       $data=input::all('value');
+       $data= $request->all();
        //$count=1;
        $name=array_keys($data);
        $count=count($name);
       // return $name;
-      for($d=2;$d<=$count;$d=$d+1)
+      for($d=2;$d<=$count-1;$d=$d+1)
       // foreach($name as $n)
        {
              $rating->id= auth()->user()->id;
@@ -54,6 +54,7 @@ class ComprehensionController extends Controller
         }
        //  $count=$count+1;
         $rating->save();
+        $submitted[1]=1;
         $section='Comprehension';
         return view('viewfinal',['section'=>$section]);
     }

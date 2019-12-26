@@ -17,7 +17,7 @@
 Route::get('/tt', function () {
     return view('auth/resultadmin');
 });
-
+$submit=0;
 //New Working Routes (Multi auth)
 Route::get('/', function () {
     return view('welcome');
@@ -52,7 +52,7 @@ Route::get('/qualitative',['middleware'=>['auth','student'],'uses'=>'QuestionsCo
 Route::get('/comprehension',['middleware'=>['auth','student'],'uses'=>'QuestionsController@comprehension']);
 Route::post('/comprehension',['middleware'=>['auth','student'],'uses'=>'ComprehensionController@store']);
 
-Route::post('/analytical',['middleware'=>['auth','student'],'uses'=>'AnalyticalController@store']);
+Route::post('/analytical',['middleware'=>['auth','student'],'uses'=>'AnalyticalController@store'])->name('analytical');
 Route::get('/analytical',['middleware'=>['auth','student'],'uses'=>'QuestionsController@analytical']);
 
 Route::post('creativity',['middleware'=>['auth','student'],'uses'=>'CreativityController@store']);
