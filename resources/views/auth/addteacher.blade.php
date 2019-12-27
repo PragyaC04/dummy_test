@@ -29,7 +29,7 @@
                           </div>
                           <div class="form-group">
                           {{Form::label('password','Password')}}
-                          {{Form::password('password','',['class'=>'form-control','placeholder'=>'Enter Password'])}}
+                          {{Form::password('password',['class'=>'form-control','placeholder'=>'Enter Password'])}}
                           </div>
                           <div class='form-group'>
                           {{Form::hidden('role', '2')}}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
+use App\User;
 use App\Qualitative;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -41,5 +42,11 @@ class ResultController extends Controller
         $anans = DB::select(DB::raw("select * from analytical_test where setid='$this->setid'"));
         $anans1 = DB::select(DB::raw("select * from qualitatives where id='$this->id'"));
         return view('final',['qans'=>$qans,'qans1'=>$qans1,'cans'=>$cans,'cans1'=>$cans1,'crans'=>$crans,'crans1'=>$crans1,'anans'=>$anans,'anans1'=>$anans1]);  
+    }
+
+    public function fetchall(){
+        $users=User::all();
+        $result=Qualitative::all();
+        return view('auth.resultadmin')->with('result',$result);
     }
 }

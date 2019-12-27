@@ -135,16 +135,16 @@ height:50px;
 
 <nav class="navbar navbar-default navbar-expand-md bg-primary shadow-sm">
     <!--navbar settings-->
-    <div class="container-fluid">
+    <div class="container">
             <div class="navbar-header">
+            <a class="navbar-brand glyphicon glyphicon-home" href="{{ url('/home') }}">&nbsp;Home
+                    </a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-                <a class="navbar-brand">
-                </a>
         </div>
          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
          <div class="container">
@@ -158,7 +158,7 @@ height:50px;
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();" class='glyphicon glyphicon-off'>
                                             Logout
                                         </a>
 

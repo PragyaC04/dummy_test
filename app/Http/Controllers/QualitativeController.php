@@ -43,7 +43,8 @@ class QualitativeController extends Controller
        //$w=auth()->user()->id;
        $data=input::all('value');
       $data= $request->all();
- //     $rating->email=auth()->user()->email;
+      $rating->name=auth()->user()->name;
+     $rating->email=auth()->user()->email;
       //$count=1;
       $name=array_keys($data);
       $count=count($name);

@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
         @include('layouts.message')
             <div class="panel panel-default">
             
-                <div class="panel-heading">Teachers</div>
+                <div class="panel-heading">Result</div>
 
                 <div class="panel-body">
 
@@ -17,29 +17,37 @@
                         </div>
                     @endif
                    
+                    @if(count($result) > 0)
                     
-                    @if(count($users) > 0)
                         <table class="table table-striped">
                             <tr>
-                            <th>First name</th>
-                            <th>Last name</th>
                             <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Qualitative</th>
+                            <th>Comprehension</th>
+                            <th>Creativity</th>
+                            <th>Analytical</th>
                             <th>Total Marks</th>
                             <th></th>
                             </tr>
-                            @foreach($users as $user)
+                            @foreach( $result as $res)                           
                             <tr>
-                                <td>{{$user->name}}</td>
-                                <td>{{$user->email}}</td>
-                                <td>{{$user->phone}}</td>
-                            </tr>
+                                <td>{{$res->id}}</td>
+                                <td><a href='student/{{$res->id}}'>{{$res->name}}</a></td>
+                                <td>{{$res->email}}</td>
+                                <td>{{$res->QUALT}}</td>
+                                <td>{{$res->COMPT}}</td>
+                                <td>{{$res->CREAT}}</td>
+                                <td>{{$res->ANALT}}</td>
+                                <td>{{$res->marks}}</td>
+                            </tr>                           
                             @endforeach
                         </table>
+
                     @else
-                        <p>You have no Teachers</p>
+                    <p>No students have given the test yet</p>
                     @endif
-                    <button class='btn btn-primary' onclick="location.href='/addteacher'">ADD TEACHER</button>
-            
                     </div>
             </div>
         </div>

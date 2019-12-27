@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="{{asset('css')}}/style.css"></script>
-</head>
-<body>
-
-<br>
-
+@extends('layouts.app2')
+@section('content')
 <?php $x = array();
 $marks=array();
 $i=1; ?>
@@ -172,15 +158,15 @@ $count3=$count3+$marks3[$k3];
 ?>
 
 <br>
-<div class="card text-center">
+<div class="container">
   <div class="card-header">
      <b>Result</b>
   </div>
   <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Section</th>
+      <th scope="col">Sec No.</th>
+      <th scope="col">Section Name</th>
       <th scope="col">Marks</th>
     </tr>
   </thead>
@@ -223,5 +209,4 @@ $(document).ready(function() {
         };
     });
 </script>
-</body>
-</html>
+@endsection

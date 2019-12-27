@@ -40,6 +40,8 @@ class AnalyticalController extends Controller
         $rating = Qualitative::firstOrNew(['id' =>auth()->user()->id]);
         $data= $request->all();
         //$count=1;
+        $rating->name=auth()->user()->name;
+     $rating->email=auth()->user()->email;
         $name=array_keys($data);
         $count=count($name);
        // return $name;
