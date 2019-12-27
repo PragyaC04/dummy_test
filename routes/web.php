@@ -70,3 +70,31 @@ Route::get('/result',['middleware'=>['auth','admin'],'uses'=>'ResultController@f
 
 Route::any('marks','MarksController@store')->name('marks');
 
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+Route::get('/test_display','Test_TeacherController@index');
+Route::post('/test_display1','Test_TeacherController@store');
+Route::get('/test_view','Test_TeacherController@display');
+Route::get('/add_question','Test_TeacherController@question');
+
+Route::post('/add_question_qual','Test_TeacherController@qual_store');
+Route::post('/add_question_analy','Test_TeacherController@analy_store');
+Route::post('/add_question_creat','Test_TeacherController@creat_store');
+Route::post('/add_question_comp','Test_TeacherController@comp_store');
+
+Route::any('/edit_qual_question','Test_TeacherController@qual_edit');
+Route::put('/update_qual_question','Test_TeacherController@qual_update');
+Route::any('/edit_analy_question','Test_TeacherController@analy_edit');
+Route::put('/update_analy_question','Test_TeacherController@analy_update');
+Route::any('/edit_creat_question','Test_TeacherController@creat_edit');
+Route::put('/update_creat_question','Test_TeacherController@creat_update');
+Route::any('/edit_comp_question','Test_TeacherController@comp_edit');
+Route::put('/update_comp_question','Test_TeacherController@comp_update');
+
+Route::get('/qual_delete','Test_TeacherController@qual_delete');
+Route::get('/analy_delete','Test_TeacherController@analy_delete');
+Route::get('/creat_delete','Test_TeacherController@creat_delete');
+Route::get('/comp_delete','Test_TeacherController@comp_delete');
+
+Route::get('/test_delete','Test_TeacherController@delete');
