@@ -25,6 +25,7 @@
     .right{
     text-align:right;
    }
+
 </style>
 
 </head>
@@ -68,6 +69,7 @@
 <div class="container">
   <div class="card">
     <div class="card-header"><h4>Tests</h4></div><br>
+    
     <div class=" right">
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" >Add Test</button>

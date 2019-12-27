@@ -191,21 +191,21 @@ height:50px;
   </div> 
   
   
-   <div class="col-sm-7 col-lg-3 mb-3">
+   {{-- <div class="col-sm-7 col-lg-3 mb-3">
 	<a href="https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp" class="custom-card">
       <div class="card card-block  h-55 new_test">
            <img src="images/new.png">
 		   <div class="alert alert-info fade in text-center" role="alert"> <b> Create new test</b></div>
       </div>
 	</a>
-   </div>
+   </div> --}}
 	
 
    <div class="col-sm-7 col-lg-3 mb-3">
 	 <a href="test_display" class="custom-card">
       <div class="card card-block h-55 new_test">
         <img src="images/existing.png">
-	    <div class="alert alert-info fade in text-center" role="alert"> <b> Edit existing test</b></div>
+	    <div class="alert alert-info fade in text-center" role="alert"> <b> Create new test or Edit existing test</b></div>
       </div>
 	 </a>
    </div>
