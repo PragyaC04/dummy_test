@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Qualitative;
+use App\User;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 
@@ -43,20 +44,18 @@ class ComprehensionController extends Controller
        $name=array_keys($data);
        $count=count($name);
       // return $name;
-      for($d=2;$d<=$count-1;$d=$d+1)
+      for($d=2;$d<=$count;$d=$d+1)
       // foreach($name as $n)
        {
              $rating->id= auth()->user()->id;
              $f="COMP_ANS".$name[$d-1];
              $rating->$f = $data[$name[$d-1]];
-             //echo $f." ";
-             //echo $data[$name[$d-1]];    
+      //       echo $f." ";
+        //     echo $data[$name[$d-1]];    
         }
        //  $count=$count+1;
         $rating->save();
-        $submitted[1]=1;
-        $section='Comprehension';
-        return view('viewfinal',['section'=>$section]);
+        return redirect('creativity');
     }
 
     /**

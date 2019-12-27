@@ -77,6 +77,23 @@
   overflow-y:auto;
 }
 }
+
+.modal-backdrop{
+   backdrop-filter: blur(5px);
+   background-color: #01223770;
+}
+.modal-backdrop.in{
+   opacity: 1 !important;
+}
+
+body.modal-open .supreme-container{
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}
+
   </style>
 </head>
 <body>
@@ -115,7 +132,7 @@
   </div>
 </nav>
 
-<form name="myForm" method="post" formaction="comprehension">  
+<form name="myForm" method="post" action="comprehension">  
 {{ csrf_field() }}
 <div class="wrapper">
   <div class="content">
@@ -208,25 +225,27 @@
 
   </div>
 </div>
-</form>
+
+
   </div>
 </div>
-<div id="AutoSubmit" class="modal" role="dialog">
+<div id="AutoSubmit" class="modal modal-backdrop fade in" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-body">
         <div class="alert alert-dark" role="alert">
-      <p>The timer has run out!Kindly submit your test now!</p>
+      <p>The timer has run out!Kindly submit Comprehension section now!</p>
     </div>
       </div>
       <div class="modal-footer">
-        <button type="submit"  class="btn qs" value="submit" onclick="window.location='{{ url('final') }}'" >Submit</button>
+        <button type="submit"  class="btn qs" value="submit" id="Auto" >Submit</button>
       </div>
     </div>
 
   </div>
 </div>
+</form>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
     function incTimer() {
@@ -245,10 +264,16 @@
       }
        else
       {
-        
-      $("#AutoSubmit").css('display','block');
-      $(".navbar").fadeTo(500,0.1);
-       $(".FormSubmit").fadeTo(500,0.1);
+        if(localStorage.getItem('sonia')){
+          $("#AutoSubmit").css('display','block');
+      //$(".navbar").fadeTo(500,0.1);
+       //$(".FormSubmit").fadeTo(500,0.1);
+      
+        }
+        else{
+         window.location.href="/qualitative";
+         localStorage.setItem('sonia','1'); 
+        }
       }
     }
 
@@ -295,6 +320,10 @@ $(".card-text > input[type=radio]").click(function(){
 });
 });
 
+/*$('#Auto').click(function(){
+  $('form[name=myForm]').attr('action','autocomp');
+  $('form[name=myForm]').submit();
+});*/
 
 
 </script>

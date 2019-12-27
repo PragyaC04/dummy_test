@@ -82,6 +82,21 @@
    display:none;
  }
 
+.modal-backdrop{
+   backdrop-filter: blur(5px);
+   background-color: #01223770;
+}
+.modal-backdrop.in{
+   opacity: 1 !important;
+}
+
+body.modal-open .supreme-container{
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}
 </style>
   
 </head>
@@ -220,8 +235,8 @@
 </div>
 
 
-</form>
-<div id="AutoSubmit" class="modal" role="dialog">
+
+<div id="AutoSubmit" class="modal modal-backdrop fade in" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
@@ -231,13 +246,13 @@
     </div>
       </div>
       <div class="modal-footer">
-        <button type="submit"  class="btn qs" value="submit" onclick="window.location='{{ url('final') }}'" >Submit</button>
+        <button type="submit"  class="btn qs" value="submit" id="Auto" >Submit</button>
       </div>
     </div>
 
   </div>
 </div>
-
+</form>
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
@@ -254,16 +269,19 @@
       }
       else
       {
-      $("#AutoSubmit").css('display','block');
-      $(".navbar").fadeTo(500,0.1);
-       $(".FormSubmit").fadeTo(500,0.1);
-      }
+        
+     
+          $("#AutoSubmit").css('display','block');
+     // $(".navbar").fadeTo(500,0.1);
+       //$(".FormSubmit").fadeTo(500,0.1);
+         localStorage.setItem('sonia','1'); 
         }
+      }
 
     if(localStorage.getItem("time"))
     {totalSecs = localStorage.getItem("time");}
     else
-    totalSecs=12;
+    totalSecs=30;
 
     $(document).ready(function() {
       
@@ -316,7 +334,6 @@ $(".card-text > input[type=radio]").click(function(){
   var myClass=$(this).parent().parent().parent().attr("id");
   var radio=$(this).attr('class');
   localStorage.setItem("q"+radio,$(this).val());
-  $.cookie("q"+radio, localStorage.getItem("q"+radio));
   $('#card'+myClass).css('background-color', '#ABEBC6');
   
   });
@@ -326,7 +343,11 @@ $("div[name='card1']").each(function(){
   $("#card"+y).html(y);
   y=y+1;
 });
-
+/*
+$('#Auto').click(function(){
+  $('form[name=myForm]').attr('action','autoqualitative');
+  $('form[name=myForm]').submit();
+});*/
 </script>
 </body>
 </html>

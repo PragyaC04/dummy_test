@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Qualitative;
 use Illuminate\Support\Facades\Input;
+use App\User;
 
 class AnalyticalController extends Controller
 {
@@ -52,10 +53,9 @@ class AnalyticalController extends Controller
               //echo $data[$name[$d-1]];    
          }
          $rating->save();
-         $submitted[3]=1;
-         //$section='Analytical';
+      //   $section='Analytical';
       //return view('viewfinal',['section'=>$section]);
-     return redirect()->route('qualitative');
+        return redirect()->route('final');
     }
 
     /**

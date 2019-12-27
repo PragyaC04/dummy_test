@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Input;
 use Config;
 class ResultController extends Controller
 {
+    private $setid,$id;
     public function qcorrect(Request $request){
         /*$a= Config::set('q','0');
         echo $a;
@@ -29,23 +30,16 @@ class ResultController extends Controller
               //echo $data[$name[$d-1]];    
          }
          $rating->save();*/
-        
-         for($i=1;$i<=20;$i=$i+1){
-            $myItem = '';
-            $a="q".$i;
-        if(isset($_COOKIE[$a])) {
-                $myItem = $_COOKIE[$a];
-                echo $myItem;
-        }}
-        /*$qans = DB::select('select * from qualitative_analysis where setid="1"');
-        $qans1 = DB::select('select * from qualitatives where id="1"');
-        $cans = DB::select('select * from comprehension where setid="1"');
-        $cans1 = DB::select('select * from qualitatives where id="1"');
-        $crans = DB::select('select * from creative_test where setid="1"');
-        $crans1 = DB::select('select * from qualitatives where id="1"');
-        $anans = DB::select('select * from analytical_test where setid="1"');
-        $anans1 = DB::select('select * from qualitatives where id="1"');
-        //return array_pop($qans);
+         $this->id=auth()->user()->id;
+         $this->setid=auth()->user()->id%2+1;
+        $qans = DB::select(DB::raw("select * from qualitative_analysis where setid='$this->setid'"));
+        $qans1 = DB::select(DB::raw("select * from qualitatives where id='$this->id'"));
+        $cans =DB::select(DB::raw("select * from comprehension where setid='$this->setid'"));
+        $cans1 = DB::select(DB::raw("select * from qualitatives where id='$this->id'"));
+        $crans = DB::select(DB::raw("select * from creative_test where setid='$this->setid'"));
+        $crans1 = DB::select(DB::raw("select * from qualitatives where id='$this->id'"));
+        $anans = DB::select(DB::raw("select * from analytical_test where setid='$this->setid'"));
+        $anans1 = DB::select(DB::raw("select * from qualitatives where id='$this->id'"));
         return view('final',['qans'=>$qans,'qans1'=>$qans1,'cans'=>$cans,'cans1'=>$cans1,'crans'=>$crans,'crans1'=>$crans1,'anans'=>$anans,'anans1'=>$anans1]);  
-    */}
+    }
 }

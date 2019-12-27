@@ -80,6 +80,23 @@
 }
 }
 
+.modal-backdrop{
+   backdrop-filter: blur(5px);
+   background-color: #01223770;
+}
+.modal-backdrop.in{
+   opacity: 1 !important;
+}
+
+body.modal-open .supreme-container{
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}
+
+
   </style>
 </head>
 <body>
@@ -212,7 +229,7 @@
 
   </div>
 </div>
-<div id="AutoSubmit" class="modal" role="dialog">
+<div id="AutoSubmit" class="modal modal-backdrop fade in" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
@@ -243,10 +260,16 @@
       }
        else
       {
-      $("#AutoSubmit").css('display','block');
-      $(".navbar").fadeTo(500,0.1);
-       $(".FormSubmit").fadeTo(500,0.1);
+      if(localStorage.getItem('sonia')){
+          $("#AutoSubmit").css('display','block');
+ //     $(".navbar").fadeTo(500,0.1);
+   //    $(".FormSubmit").fadeTo(500,0.1);
       
+        }
+        else{
+         window.location.href="/qualitative";
+         localStorage.setItem('sonia','1'); 
+        }
       }
         }
     if(localStorage.getItem("time"))
@@ -309,12 +332,12 @@ $("div[name='card1']").each(function(){
   $("#card"+y).html(y);
   y=y+1;
 });
-
+/*
 $('#Auto').click(function(){
-  $('form[name=myForm]').attr('action','final');
+  $('form[name=myForm]').attr('action','autoanalytical');
   $('form[name=myForm]').submit();
 });
-/*window.onload=function(){
+window.onload=function(){
   localStorage.clear();
 }*/
 

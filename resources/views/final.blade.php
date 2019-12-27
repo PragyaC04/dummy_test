@@ -8,7 +8,6 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="{{asset('js')}}/event.js"></script>
   <script src="{{asset('css')}}/style.css"></script>
 </head>
 <body>
@@ -217,6 +216,12 @@ $count3=$count3+$marks3[$k3];
 window.onload=function(){
   localStorage.clear();
 }
+$(document).ready(function() {
+        window.history.pushState(null, "", window.location.href);        
+        window.onpopstate = function() {
+            window.history.pushState(null, "", window.location.href);
+        };
+    });
 </script>
 </body>
 </html>

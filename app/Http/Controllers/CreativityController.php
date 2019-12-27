@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Qualitative;
 use Illuminate\Support\Facades\Input;
+use App\User;
 
 class CreativityController extends Controller
 {
@@ -39,8 +40,9 @@ class CreativityController extends Controller
         $rating = Qualitative::firstOrNew(['id' =>auth()->user()->id]);
         //return $request->all();
      //  $rating = new qualitative;
-       $data=input::all('value');
+      // $data=input::all('value');
        //$count=1;
+       $data= $request->all();
        $name=array_keys($data);
        $count=count($name);
       // return $name;
@@ -49,15 +51,13 @@ class CreativityController extends Controller
        { $rating->id= auth()->user()->id;
         $f="CRE_ANS".$name[$d-1];
         $rating->$f = $data[$name[$d-1]];
-        //echo " <br> ".$f." ";
+      //  echo " <br> ".$f." ";
         //echo $data[$name[$d-1]];   
                  
         }
        //  $count=$count+1;
         $rating->save();
-        $submitted[2]=1;
-        $section='Creativity';
-        return view('viewfinal',['section'=>$section]);
+       return redirect('analytical');
         
       
      }

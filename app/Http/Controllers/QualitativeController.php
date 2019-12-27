@@ -50,19 +50,20 @@ class QualitativeController extends Controller
         //return ($data);
      //return $name;
      
-     for($d=2;$d<=$count-1;$d=$d+1)
+     for($d=2;$d<=$count;$d=$d+1)
      // foreach($name as $n)
       {
             $rating->id=auth()->user()->id;
             $f="SEC1_ANS".$name[$d-1];
             $rating->$f = $data[$name[$d-1]];  
+            //echo " <br> ".$f." ";
+            //echo $data[$name[$d-1]];   
        }
       //  $count=$count+1;
-      echo $submit;
+
        $rating->save();
-       Config::set('foo.bar', 'test');
-        $section='Qualitative';
-        return view('viewfinal',['section'=>$section]);
+     //   $section='Qualitative';
+       return redirect('comprehension');
         
       
 

@@ -49,14 +49,14 @@ Route::get('/addteacher',['middleware'=>['auth','admin'],'uses'=>'PagesControlle
 Route::post('/qualitative',['middleware'=>['auth','student'],'uses'=>'QualitativeController@store']);
 Route::get('/qualitative',['middleware'=>['auth','student'],'uses'=>'QuestionsController@qualitative']);
 
-Route::get('/comprehension',['middleware'=>['auth','student'],'uses'=>'QuestionsController@comprehension']);
-Route::post('/comprehension',['middleware'=>['auth','student'],'uses'=>'ComprehensionController@store']);
+Route::get('/comprehension',['middleware'=>['auth','student'],'uses'=>'QuestionsController@comprehension'])->name('comprehension');
+Route::post('/comprehension',['middleware'=>['auth','student'],'uses'=>'ComprehensionController@store'])->name('comprehension');
 
 Route::post('/analytical',['middleware'=>['auth','student'],'uses'=>'AnalyticalController@store'])->name('analytical');
-Route::get('/analytical',['middleware'=>['auth','student'],'uses'=>'QuestionsController@analytical']);
+Route::get('/analytical',['middleware'=>['auth','student'],'uses'=>'QuestionsController@analytical'])->name('analytical');;
 
-Route::post('creativity',['middleware'=>['auth','student'],'uses'=>'CreativityController@store']);
-Route::get('creativity',['middleware'=>['auth','student'],'uses'=>'QuestionsController@creativity']);
+Route::post('creativity',['middleware'=>['auth','student'],'uses'=>'CreativityController@store'])->name('creativity');
+Route::get('creativity',['middleware'=>['auth','student'],'uses'=>'QuestionsController@creativity'])->name('creativity');
 
 Route::post('final','ResultController@qcorrect')->name('final');
 Route::get('final','ResultController@qcorrect')->name('final');
@@ -69,3 +69,4 @@ Route::get('/result',['middleware'=>['auth','teacher'],'uses'=>'ResultController
 Route::get('/result',['middleware'=>['auth','admin'],'uses'=>'ResultController@fetchall'])->name('result');
 
 Route::any('marks','MarksController@store')->name('marks');
+
