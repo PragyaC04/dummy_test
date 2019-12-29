@@ -49,6 +49,10 @@ class Test_TeacherController extends Controller
 /* ------------------------------------------------- QUALITATIVE STORE ----------------------------------------------------------- */
      
      public function qual_store(Request $request){
+        $a=$_POST['test_id'];
+        $b=$_POST['test_n'];
+        $sect=$_POST['section'];
+
         $qual = new Qualitative_test();
         $qual->qid = $request->input('q_number');
         $qual->question = $request->input('q_content');
@@ -119,11 +123,11 @@ class Test_TeacherController extends Controller
         {
             $qual->option4img=' ';
         }
+        $qual->uniq_id=$qual->setid.$qual->qid;
 
         $qual->save();
-        $a=$_POST['test_id'];
-        $b=$_POST['test_n'];
-        $sect=$_POST['section'];
+        
+
         return view('add_question')->with('qual',$qual)->with('a',$a)->with('b',$b)->with('sect',$sect);
     }
 
@@ -131,6 +135,10 @@ class Test_TeacherController extends Controller
     /* ------------------------------------------------- ANALYTICAL STORE ----------------------------------------------------------- */
 
     public function analy_store(Request $request){
+        $a=$_POST['test_id'];
+        $b=$_POST['test_n'];
+        $sect=$_POST['section'];
+
         $analy = new Analytical_test();
         $analy->qid = $request->input('q_number');
         $analy->question = $request->input('q_content');
@@ -201,11 +209,9 @@ class Test_TeacherController extends Controller
         {
             $analy->option4img=' ';
         }
-
+        $analy->uniq_id=$analy->setid.$analy->qid;
         $analy->save();
-        $a=$_POST['test_id'];
-        $b=$_POST['test_n'];
-        $sect=$_POST['section'];
+        
         return view('add_question')->with('analy',$analy)->with('a',$a)->with('b',$b)->with('sect',$sect);
     }
 
@@ -213,6 +219,10 @@ class Test_TeacherController extends Controller
 
 
     public function creat_store(Request $request){
+        $a=$_POST['test_id'];
+        $b=$_POST['test_n'];
+        $sect=$_POST['section'];
+
         $creat = new Creative_test();
         $creat->qid = $request->input('q_number');
         $creat->question = $request->input('q_content');
@@ -296,11 +306,10 @@ class Test_TeacherController extends Controller
         {
             $creat->option5img=' ';
         }
+        $creat->uniq_id=$creat->setid.$creat->qid;
 
         $creat->save();
-        $a=$_POST['test_id'];
-        $b=$_POST['test_n'];
-        $sect=$_POST['section'];
+        
         return view('add_question')->with('creat',$creat)->with('a',$a)->with('b',$b)->with('sect',$sect);
     }
 
@@ -308,6 +317,10 @@ class Test_TeacherController extends Controller
     /* ------------------------------------------------- COMPREHENSION STORE ----------------------------------------------------------- */
 
     public function comp_store(Request $request){
+        $a=$_POST['test_id'];
+        $b=$_POST['test_n'];
+        $sect=$_POST['section'];
+
         $comp = new Comprehension_test();
         $comp->para = $request->input('para');
         $comp->qid = $request->input('q_number');
@@ -379,11 +392,10 @@ class Test_TeacherController extends Controller
         {
             $comp->option4img=' ';
         }
+        $comp->uniq_id=$comp->setid.$comp->qid;
 
         $comp->save();
-        $a=$_POST['test_id'];
-        $b=$_POST['test_n'];
-        $sect=$_POST['section'];
+        
         return view('add_question')->with('comp',$comp)->with('a',$a)->with('b',$b)->with('sect',$sect); 
        }
 
@@ -394,13 +406,13 @@ class Test_TeacherController extends Controller
         $b=$_POST['test_n'];
         $sect=$_POST['section'];
         $c=$_POST['quest_id']; 
-
-        $qual=Qualitative_test::all()->where('qid',$c)->where('setid',$a)->first();
+        $u=$a.$c;
+        $qual=Qualitative_test::all()->where('uniq_id',$u)->first();
         return view('edit_question',['qual'=>$qual])->with('a',$a)->with('b',$b)->with('sect',$sect)->with('c',$c); 
         //$qual=json_encode($array[0]);
         //$qual=json_decode($qual);
         //echo $qual->qid;
-        //return $qual->qid;
+        //return $qual;
         //$query = $this->select("select * from qualitatives where qid='$c' and setid='$a'");
         //echo $query;
         //$qual = response()->json($array);
@@ -421,12 +433,13 @@ class Test_TeacherController extends Controller
         /* $array =DB::select("select * from qualitatives where qid='$c' and setid='$a'");
         $qual=json_encode($array[0]);
         $qual=json_decode($qual);  */
-
-        $qual=Qualitative_test::all()->where('qid',$c)->where('setid',$a)->first();
+        $u=$a.$c;
+        $qual=Qualitative_test::all()->where('uniq_id',$u)->first();
         $qual->qid = $request->input('q_number');
         $qual->question = $request->input('q_content');
         $qual->marks = $request->input('q_mks');
         $qual->setid = $request->input('sid');
+        $qual->uniq_id=$qual->setid.$qual->qid;
         $qual->correct = $request->input('correct');
         if($request->hasfile('q_image')){
             $file = $request->file('q_image');
@@ -435,10 +448,10 @@ class Test_TeacherController extends Controller
             $file->move('uploads/questions/', $filename);
             $qual->questionimg = $filename;
         }
-        else
+        /* else
         {
             $qual->questionimg=' ';
-        }
+        } */
         
         $qual->option1 = $request->input('o1_content');
         if($request->hasfile('o1_image')){
@@ -448,10 +461,10 @@ class Test_TeacherController extends Controller
             $file->move('uploads/option1/', $filename);
             $qual->option1img = $filename;
         }
-        else
+       /*  else
         {
             $qual->option1img=' ';
-        }
+        } */
 
         
         $qual->option2 = $request->input('o2_content');
@@ -462,11 +475,11 @@ class Test_TeacherController extends Controller
             $file->move('uploads/option2/', $filename);
             $qual->option2img = $filename;
         }
-        else
+        /* else
         {
             $qual->option2img=' ';
         }
-
+ */
         $qual->option3 = $request->input('o3_content');
         if($request->hasfile('o3_image')){
             $file = $request->file('o3_image');
@@ -475,10 +488,10 @@ class Test_TeacherController extends Controller
             $file->move('uploads/option3/', $filename);
             $qual->option3img = $filename;
         }
-        else
+        /* else
         {
             $qual->option3img=' ';
-        }
+        } */
 
         $qual->option4 = $request->input('o4_content');
         if($request->hasfile('o4_image')){
@@ -488,12 +501,12 @@ class Test_TeacherController extends Controller
             $file->move('uploads/option4/', $filename);
             $qual->option4img = $filename;
         }
-        else
+       /*  else
         {
             $qual->option4img=' ';
-        }
+        } */
         $qual->save();
-        return view('succ')->with('a',$a)->with('b',$b)->with('sect',$sect);
+        return view('succ')->with('a',$a)->with('b',$b)->with('sect',$sect); 
         //$qual_a=(array)$qual;
       // $qual->save();
 //return $qual;
@@ -512,8 +525,8 @@ public function analy_edit(){
     $b=$_POST['test_n'];
     $sect=$_POST['section'];
     $c=$_POST['quest_id']; 
-
-    $qual=Analytical_test::all()->where('qid',$c)->where('setid',$a)->first();
+    $u=$a.$c;
+    $qual=Analytical_test::all()->where('uniq_id',$u)->first();
     return view('edit_question',['qual'=>$qual])->with('a',$a)->with('b',$b)->with('sect',$sect)->with('c',$c); 
    }
 
@@ -524,12 +537,13 @@ public function analy_edit(){
     $b=$_POST['test_n'];
     $sect=$_POST['section'];
     $c=$_POST['quest_id']; 
-
-    $qual=Analytical_test::all()->where('qid',$c)->where('setid',$a)->first();
+    $u=$a.$c;
+    $qual=Analytical_test::all()->where('uniq_id',$u)->first();
     $qual->qid = $request->input('q_number');
     $qual->question = $request->input('q_content');
     $qual->marks = $request->input('q_mks');
     $qual->setid = $request->input('sid');
+    $qual->uniq_id=$qual->setid.$qual->qid;
     $qual->correct = $request->input('correct');
     if($request->hasfile('q_image')){
         $file = $request->file('q_image');
@@ -538,10 +552,10 @@ public function analy_edit(){
         $file->move('uploads/questions/', $filename);
         $qual->questionimg = $filename;
     }
-    else
+    /* else
     {
         $qual->questionimg=' ';
-    }
+    } */
     
     $qual->option1 = $request->input('o1_content');
     if($request->hasfile('o1_image')){
@@ -551,10 +565,10 @@ public function analy_edit(){
         $file->move('uploads/option1/', $filename);
         $qual->option1img = $filename;
     }
-    else
+    /* else
     {
         $qual->option1img=' ';
-    }
+    } */
 
     
     $qual->option2 = $request->input('o2_content');
@@ -565,10 +579,10 @@ public function analy_edit(){
         $file->move('uploads/option2/', $filename);
         $qual->option2img = $filename;
     }
-    else
+    /* else
     {
         $qual->option2img=' ';
-    }
+    } */
 
     $qual->option3 = $request->input('o3_content');
     if($request->hasfile('o3_image')){
@@ -578,10 +592,10 @@ public function analy_edit(){
         $file->move('uploads/option3/', $filename);
         $qual->option3img = $filename;
     }
-    else
+    /* else
     {
         $qual->option3img=' ';
-    }
+    } */
 
     $qual->option4 = $request->input('o4_content');
     if($request->hasfile('o4_image')){
@@ -591,10 +605,10 @@ public function analy_edit(){
         $file->move('uploads/option4/', $filename);
         $qual->option4img = $filename;
     }
-    else
-    {
+    /*else
+     {
         $qual->option4img=' ';
-    }
+    } */
     $qual->save();
     return view('succ')->with('a',$a)->with('b',$b)->with('sect',$sect);     
 }
@@ -609,8 +623,8 @@ public function creat_edit(){
     $b=$_POST['test_n'];
     $sect=$_POST['section'];
     $c=$_POST['quest_id']; 
-
-    $qual=Creative_test::all()->where('qid',$c)->where('setid',$a)->first();
+    $u=$a.$c;
+    $qual=Creative_test::all()->where('uniq_id',$u)->first();
     return view('edit_question',['qual'=>$qual])->with('a',$a)->with('b',$b)->with('sect',$sect)->with('c',$c); 
    }
 
@@ -621,12 +635,13 @@ public function creat_edit(){
     $b=$_POST['test_n'];
     $sect=$_POST['section'];
     $c=$_POST['quest_id']; 
-
-    $qual=Creative_test::all()->where('qid',$c)->where('setid',$a)->first();
+    $u=$a.$c;
+    $qual=Creative_test::all()->where('uniq_id',$u)->first();
     $qual->qid = $request->input('q_number');
     $qual->question = $request->input('q_content');
     $qual->marks = $request->input('q_mks');
     $qual->setid = $request->input('sid');
+    $qual->uniq_id=$qual->setid.$qual->qid;
     $qual->correct = $request->input('correct');
     if($request->hasfile('q_image')){
         $file = $request->file('q_image');
@@ -717,8 +732,8 @@ public function comp_edit(){
     $b=$_POST['test_n'];
     $sect=$_POST['section'];
     $c=$_POST['quest_id']; 
-
-    $qual=Comprehension_test::all()->where('qid',$c)->where('setid',$a)->first();
+    $u=$a.$c;
+    $qual=Comprehension_test::all()->where('uniq_id',$u)->first();
     return view('edit_question',['qual'=>$qual])->with('a',$a)->with('b',$b)->with('sect',$sect)->with('c',$c); 
    }
 
@@ -729,13 +744,14 @@ public function comp_edit(){
     $b=$_POST['test_n'];
     $sect=$_POST['section'];
     $c=$_POST['quest_id']; 
-
-    $qual=Comprehension_test::all()->where('qid',$c)->where('setid',$a)->first();
+    $u=$a.$c;
+    $qual=Comprehension_test::all()->where('uniq_id',$u)->first();
     $qual->qid = $request->input('q_number');
     $qual->para = $request->input('para');
     $qual->question = $request->input('q_content');
     $qual->marks = $request->input('q_mks');
     $qual->setid = $request->input('sid');
+    $qual->uniq_id=$qual->setid.$qual->qid;
     $qual->correct = $request->input('correct');
     if($request->hasfile('q_image')){
         $file = $request->file('q_image');
@@ -744,10 +760,10 @@ public function comp_edit(){
         $file->move('uploads/questions/', $filename);
         $qual->questionimg = $filename;
     }
-    else
+    /* else
     {
         $qual->questionimg=' ';
-    }
+    } */
     
     $qual->option1 = $request->input('o1_content');
     if($request->hasfile('o1_image')){
@@ -757,10 +773,10 @@ public function comp_edit(){
         $file->move('uploads/option1/', $filename);
         $qual->option1img = $filename;
     }
-    else
+    /* else
     {
         $qual->option1img=' ';
-    }
+    } */
 
     
     $qual->option2 = $request->input('o2_content');
@@ -771,11 +787,11 @@ public function comp_edit(){
         $file->move('uploads/option2/', $filename);
         $qual->option2img = $filename;
     }
-    else
+    /* else
     {
         $qual->option2img=' ';
     }
-
+ */
     $qual->option3 = $request->input('o3_content');
     if($request->hasfile('o3_image')){
         $file = $request->file('o3_image');
@@ -784,10 +800,10 @@ public function comp_edit(){
         $file->move('uploads/option3/', $filename);
         $qual->option3img = $filename;
     }
-    else
+    /* else
     {
         $qual->option3img=' ';
-    }
+    } */
 
     $qual->option4 = $request->input('o4_content');
     if($request->hasfile('o4_image')){
@@ -797,24 +813,25 @@ public function comp_edit(){
         $file->move('uploads/option4/', $filename);
         $qual->option4img = $filename;
     }
-    else
+   /*  else
     {
         $qual->option4img=' ';
-    }
+    } */
     $qual->save();
     return view('succ')->with('a',$a)->with('b',$b)->with('sect',$sect);
 }
 
-/*----------------------------QUALITATIVE DELETE----------------------------------------------------------*/
+
+/*------------------------------ DELETE------------------------------------------*/
+
     public function qual_delete()
     {
         $a=$_GET['test_id'];
         $b=$_GET['test_n'];
         $sect=$_GET['section'];
         $c=$_GET['quest_id'];
-
-        $qual=Qualitative_test::all()->where('qid',$c)->where('setid',$a)->first();
-        $qual->delete();
+        $u=$a.$c;
+        Qualitative_test::where('uniq_id',$u)->delete();
         return view('succ_delete')->with('a',$a)->with('b',$b)->with('sect',$sect);
     }
 
@@ -824,9 +841,10 @@ public function comp_edit(){
         $b=$_GET['test_n'];
         $sect=$_GET['section'];
         $c=$_GET['quest_id'];
+        $u=$a.$c;
 
-        $qual=Analytical_test::all()->where('qid',$c)->where('setid',$a)->first();
-        $qual->delete();
+        Analytical_test::where('uniq_id',$u)->delete();
+        //$qual->delete();
         return view('succ_delete')->with('a',$a)->with('b',$b)->with('sect',$sect);
     }
 
@@ -836,9 +854,10 @@ public function comp_edit(){
         $b=$_GET['test_n'];
         $sect=$_GET['section'];
         $c=$_GET['quest_id'];
+        $u=$a.$c;
 
-        $qual=Creative_test::all()->where('qid',$c)->where('setid',$a)->first();
-        $qual->delete();
+        Creative_test::where('uniq_id',$u)->delete();
+        //$qual->delete();
         return view('succ_delete')->with('a',$a)->with('b',$b)->with('sect',$sect);
     }
 
@@ -848,9 +867,9 @@ public function comp_edit(){
         $b=$_GET['test_n'];
         $sect=$_GET['section'];
         $c=$_GET['quest_id'];
-
-        $qual=Comprehension_test::all()->where('qid',$c)->where('setid',$a)->first();
-        $qual->delete();
+        $u=$a.$c;
+        Comprehension_est::where('uniq_id',$u)->delete();
+        //$qual->delete();
         return view('succ_delete')->with('a',$a)->with('b',$b)->with('sect',$sect);
     }
 

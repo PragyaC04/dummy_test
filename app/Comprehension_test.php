@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Comprehension_test extends Model
 {
     protected $table='comprehension';
-    protected $primaryKey = 'qid';
+    protected $primaryKey = 'uniq_id';
+    public $incrementing = false;
 }

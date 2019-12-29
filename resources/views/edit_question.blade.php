@@ -133,7 +133,7 @@
     <div class="container">
         <h3>Analytical Analysis Section</h3>
         
-        <form action = "{{action('TestsController@analy_update')}}" method="POST" enctype="multipart/form-data">
+        <form action = "{{action('Test_TeacherController@analy_update')}}" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="PUT"/>
          <input type="hidden" name="_token" value="{{csrf_token()}}"/>
         <input type="hidden" value="{{$a}}" name="test_id">
