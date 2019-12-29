@@ -153,24 +153,25 @@ body.modal-open .supreme-container{
             <br>
       @endif
       @if($user2->questionimg)
-      <img src="data:image/png;base64,{{chunk_split(base64_encode($user2->questionimg))}}">
+      <img src="{{ asset('uploads/questions/'.$user2->questionimg)}}"  alt="">
       @endif</p>
       <p style="float:right;">({{ $user2->marks}})</p>
   </div>
   <div class="card-body">
 
     <p class="card-text" > 
-    <input type="radio" name="{{$user2->qid}}" class="{{$user2->qid}}" value="1" >   @if($user2->option1img)
-     <img src="data:image/png;base64,{{chunk_split(base64_encode($user2->option1img))}}">
+    <input type="radio" name="{{$user2->qid}}" class="{{$user2->qid}}" value="1" >   
+    @if($user2->option1img)
+     <img src="{{ asset('uploads/option1/'.$user2->option1img)}}"  alt="">
       @endif
       @if($user2->option1)
       {{$user2->option1}}
-      @endif</input>
+      @endif
    </p>
       <p class="card-text"> 
       <input type="radio" name="{{$user2->qid}}" class="{{$user2->qid}}" value="2">
      @if($user2->option2img)
-     <img src="data:image/png;base64,{{chunk_split(base64_encode($user2->option2img))}}">
+     <img src="{{ asset('uploads/option2/'.$user2->option2img)}}"  alt="">
       @endif
       @if($user2->option2)
       {{$user2->option2}}
@@ -179,7 +180,7 @@ body.modal-open .supreme-container{
       <p class="card-text">
       <input type="radio" name="{{$user2->qid}}" class="{{$user2->qid}}" value="3"> 
      @if($user2->option3img)
-     <img src="data:image/png;base64,{{chunk_split(base64_encode($user2->option3img))}}">
+     <img src="{{ asset('uploads/option3/'.$user2->option3img)}}"  alt="">
       @endif
       @if($user2->option3)
       {{$user2->option3}}
@@ -188,7 +189,7 @@ body.modal-open .supreme-container{
       <p class="card-text"> 
       <input type="radio" name="{{$user2->qid}}" class="{{$user2->qid}}" value="4">
      @if($user2->option4img)
-     <img src="data:image/png;base64,{{chunk_split(base64_encode($user2->option4img))}}">
+     <img src="{{ asset('uploads/option4/'.$user2->option4img)}}"  alt="">
       @endif
       @if($user2->option4)
       {{$user2->option4}}

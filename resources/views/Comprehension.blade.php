@@ -162,7 +162,7 @@ body.modal-open .supreme-container{
 
     <p class="card-text" > 
     <input type="radio" name="{{$user3->qid}}" class="{{$user3->qid}}" value="1">   @if($user3->option1img)
-     <img src="data:image/png;base64,{{chunk_split(base64_encode($user3->option1img))}}">
+    <img src="{{ asset('uploads/option1/'.$user3->option1img)}}"  alt="">
       @endif
       @if($user3->option1)
       {{$user3->option1}}
@@ -171,7 +171,7 @@ body.modal-open .supreme-container{
       <p class="card-text"> 
       <input type="radio" name="{{$user3->qid}}" class="{{$user3->qid}}" value="2">
      @if($user3->option2img)
-     <img src="data:image/png;base64,{{chunk_split(base64_encode($user3->option2img))}}">
+    <img src="{{ asset('uploads/option2/'.$user3->option2img)}}"  alt="">
       @endif
       @if($user3->option2)
       {{$user3->option2}}
@@ -180,7 +180,7 @@ body.modal-open .supreme-container{
       <p class="card-text">
       <input type="radio"  name="{{$user3->qid}}" class="{{$user3->qid}}" value="3"> 
      @if($user3->option3img)
-     <img src="data:image/png;base64,{{chunk_split(base64_encode($user3->option3img))}}">
+    <img src="{{ asset('uploads/option3/'.$user3->option3img)}}"  alt="">
       @endif
       @if($user3->option3)
       {{$user3->option3}}
@@ -189,7 +189,7 @@ body.modal-open .supreme-container{
       <p class="card-text"> 
       <input type="radio" name="{{$user3->qid}}" class="{{$user3->qid}}" value="4">
      @if($user3->option4img)
-     <img src="data:image/png;base64,{{chunk_split(base64_encode($user3->option4img))}}">
+    <img src="{{ asset('uploads/option4/'.$user3->option4img)}}"  alt="">
       @endif
       @if($user3->option4)
       {{$user3->option4}}

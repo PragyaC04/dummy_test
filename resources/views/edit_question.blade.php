@@ -478,7 +478,7 @@
             </div>
         </div>
         </form>
-        <form action="{{action('TestsController@display')}}" method="GET">
+        <form action="{{action('Test_TeacherController@display')}}" method="GET">
         <input type="hidden" value="{{$a}}" name="test_id">
         <input type="hidden" value="{{$b}}" name="test_n">
         <input type="hidden" value="comprehension" name="section">

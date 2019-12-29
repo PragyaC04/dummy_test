@@ -155,7 +155,7 @@ body.modal-open .supreme-container{
             {{ $user->question }}
       @endif
       @if($user->questionimg)
-      <img src="data:image/png;base64,{{chunk_split(base64_encode($user->questionimg))}}">
+    <img src="{{ asset('uploads/questions/'.$user->questionimg)}}"  alt="">
       @endif</p>
       <p style="float:right;">({{ $user->marks}})</p>
   </div>
@@ -163,7 +163,7 @@ body.modal-open .supreme-container{
 
     <p class="card-text" > 
     <input type="radio" name="{{$user->qid}}" class="{{$user->qid}}" value="1" >   @if($user->option1img)
-     <img src="data:image/png;base64,{{chunk_split(base64_encode($user->option1img))}}">
+    <img src="{{ asset('uploads/option1/'.$user->option1img)}}"  alt="">
       @endif
       @if($user->option1)
       {{$user->option1}}
@@ -172,7 +172,7 @@ body.modal-open .supreme-container{
       <p class="card-text" > 
       <input type="radio" name="{{$user->qid}}" value="2" class="{{$user->qid}}">
      @if($user->option2img)
-     <img src="data:image/png;base64,{{chunk_split(base64_encode($user->option2img))}}">
+    <img src="{{ asset('uploads/option2/'.$user->option2img)}}"  alt="">
       @endif
       @if($user->option2)
       {{$user->option2}}
@@ -181,7 +181,7 @@ body.modal-open .supreme-container{
       <p class="card-text">
       <input type="radio" name="{{$user->qid}}" value="3" class="{{$user->qid}}"> 
      @if($user->option3img)
-     <img src="data:image/png;base64,{{chunk_split(base64_encode($user->option3img))}}">
+    <img src="{{ asset('uploads/option3/'.$user->option3img)}}"  alt="">
       @endif
       @if($user->option3)
       {{$user->option3}}
@@ -190,7 +190,7 @@ body.modal-open .supreme-container{
       <p class="card-text"> 
       <input type="radio" name="{{$user->qid}}" value="4" class="{{$user->qid}}">
      @if($user->option4img)
-     <img src="data:image/png;base64,{{chunk_split(base64_encode($user->option4img))}}">
+    <img src="{{ asset('uploads/option4/'.$user->option4img)}}"  alt="">
       @endif
       @if($user->option4)
       {{$user->option4}}
