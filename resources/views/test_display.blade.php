@@ -25,6 +25,9 @@
     .right{
     text-align:right;
    }
+   .left{
+    text-align:left;
+   }
 
 </style>
 
@@ -69,8 +72,10 @@
 <div class="container">
   <div class="card">
     <div class="card-header"><h4>Tests</h4></div><br>
-    
+    {{-- <a href="home" class="btn btn-primary">Back</a> --}}
     <div class=" right">
+        <a href="home" class="btn btn-primary">Back</a>
+
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" >Add Test</button>
     </div>
